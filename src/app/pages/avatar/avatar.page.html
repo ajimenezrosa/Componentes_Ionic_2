@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+
+<ion-buttons slot="start" 
+                    >
+    <ion-back-button defaultHref="/" 
+              text="Regresar" color="primary"
+              ></ion-back-button>
+</ion-buttons>
+    <ion-title class="ion-text-capitalize">avatar</ion-title>
+
+  <ion-buttons slot="end">
+      <ion-avatar >
+        <img [src]="imagen" alt="Avatar GitHub">
+      </ion-avatar>
+  </ion-buttons>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-chip color="primary" *ngFor="let i of [1,1,1,1,1,1]" outline="true" >
+          <ion-avatar  >
+              <img [src]="imagen" alt="">
+          </ion-avatar>
+          <ion-label>Alejandro Jimenez</ion-label>
+    </ion-chip>
+  </ion-list>
+
+
+  <ion-list class="ion-padding">
+        <ion-item *ngFor="let c of [1,1,1,1,1,1]">
+          <ion-avatar slot="start">
+            <img  [src]="imagen" alt="">
+          </ion-avatar>
+            <ion-label>Alejandro </ion-label>
+        </ion-item>
+  </ion-list>
+
+
+
+
+
+</ion-content>
