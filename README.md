@@ -855,13 +855,16 @@ export class MyComponent {
 
 # ion-fab
 
-
+![](https://i.stack.imgur.com/6OhAg.png)
 
 #### Fabs are container elements that contain one or more fab buttons. They should be placed in a fixed position that does not scroll with the content. Fab should have one main fab-button. Fabs can also contain fab-lists which contain related buttons that show when the main fab button is clicked. The same fab container can contain several fab-list elements with different side values.
 
 # 
 
 ## Usage
+
+![](https://raw.githubusercontent.com/PraveenJP/ionic-fab/master/www/img/SS.PNG)
+
 
 ~~~javascript
 <ion-header>
@@ -1244,6 +1247,7 @@ export class MyComponent {
 
 
 # ion-grid
+![](https://www.lowi.es/blog/wp-content/uploads/2019/09/kiosco-online-screenshot.jpg)
 
 ### The grid is a powerful mobile-first flexbox system for building custom layouts.
 
@@ -1459,5 +1463,112 @@ export class MyComponent {
 |--ion-grid-width-xs |	Width of the fixed Grid on xs screens|
 
 
+# 
 
+# ion-infinite-scroll
+
+![](https://cdn-images-1.medium.com/max/1600/0*ADvLjzLzT7SELZDs.gif)
+
+#### The Infinite Scroll component calls an action to be performed when the user scrolls a specified distance from the bottom or top of the page.
+
+#### The expression assigned to the ionInfinite event is called when the user reaches that defined distance. When this expression has finished any and all tasks, it should call the complete() method on the infinite scroll instance.
+
+## Infinite Scroll Content
+#### The ion-infinite-scroll component has the infinite scroll logic. It requires a child component in order to display content. Ionic uses its ion-infinite-scroll-content component by default. This component displays the infinite scroll and changes the look depending on the infinite scroll's state. It displays a spinner that looks best based on the platform the user is on. However, the default spinner can be changed and text can be added by setting properties on the ion-infinite-scroll-content component.
+
+## Custom Content
+#### Separating the ion-infinite-scroll and ion-infinite-scroll-content components allows developers to create their own content components, if desired. This content can contain anything, from an SVG element to elements with unique CSS animations.
+
+# Usage
+
+htm coding for this components
+~~~html
+<ion-content>
+  <ion-button (click)="toggleInfiniteScroll()" expand="block">
+    Toggle Infinite Scroll
+  </ion-button>
+
+  <ion-list></ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+~~~
+
+javascript coding example for this components.
+
+~~~javascript
+import { Component, ViewChild } from '@angular/core';
+import { IonInfiniteScroll } from '@ionic/angular';
+
+@Component({
+  selector: 'infinite-scroll-example',
+  templateUrl: 'infinite-scroll-example.html',
+  styleUrls: ['./infinite-scroll-example.css']
+})
+export class InfiniteScrollExample {
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+
+  constructor() {}
+
+  loadData(event) {
+    setTimeout(() => {
+      console.log('Done');
+      event.target.complete();
+
+      // App logic to determine if all data is loaded
+      // and disable the infinite scroll
+      if (data.length == 1000) {
+        event.target.disabled = true;
+      }
+    }, 500);
+  }
+
+  toggleInfiniteScroll() {
+    this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
+  }
+}
+~~~
+# Properties
+# 
+## disabled
+|   |      | 
+|-----------------|--------------------|
+|Description	 | If true, the infinite scroll will be hidden and scroll event listeners will be removed.
+
+Set this to true to disable the infinite scroll from actively trying to receive new data while scrolling. This is useful when it is known that there is no more data that can be added, and the infinite scroll is no longer needed.|
+
+|Attribute |	disabled |
+|Type | 	boolean |
+|Default |	false |
+
+## position
+|Description	 | The position of the infinite scroll element. The value can be either **top** or **bottom**.|
+|Attribute |	position|
+"Type |	"bottom" - "top"|
+|Default |	'bottom'|
+
+## threshold
+|Description	|The threshold distance from the bottom of the content to call the infinite output event when scrolled. The threshold value can be either a percent, or in pixels. For example, use the value of 10% for the infinite output event to get called when the user has scrolled 10% from the bottom of the page. Use the value 100px when the scroll is within 100 pixels from the bottom of the page.|
+|------------------|-----------------------|
+|Attribute|	threshold|
+|Type|	string|
+|Default|	'15%'|
+
+## Events
+|Name |	Description|
+|------------|-----------|
+|ionInfinite |	Emitted when the scroll reaches the threshold distance. From within your infinite handler, you must call the infinite scroll's `complete()` method when your async operation has completed.|
+
+## Methods
+### complete
+|Description	|Call complete() within the ionInfinite output event handler when your async operation has completed. For example, the loading state is while the app is performing an asynchronous operation, such as receiving more data from an AJAX request to add more items to a data list. Once the data has been received and UI updated, you then call this method to signify that the loading has completed. This method will change the infinite scroll's state from loading to enabled.|
+|-------------|---------------------|
+|Signature|	complete() => Promise<void>|
+
+# 
 

@@ -48,6 +48,10 @@ const routes: Routes = [
     path: 'grid',
     loadChildren: () => import('./pages/grid/grid.module').then( m => m.GridPageModule)
   },
+  {
+    path: 'infinit',
+    loadChildren: () => import('./pages/infinit/infinit.module').then( m => m.InfinitPageModule)
+  },
 ];
 
 @NgModule({
