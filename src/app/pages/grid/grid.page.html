@@ -1,0 +1,25 @@
+<app-header titulo="Grid"></app-header>
+
+<ion-content>
+
+    <!--Ion grid example-->
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-lg="3" size-md="4" size-sm="6"
+              *ngFor="let item of [1,1,1,1,1,1,1,1,1,1,1,1]"> 
+            <ion-card>
+                <ion-img [src]="imagen"></ion-img>
+            </ion-card>
+            <ion-card-header>
+                  <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle>
+                  <ion-card-title>Awesome Title</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                    Create custom color palettes for your app’s UI. Update a color’s hex values, check the demo app on the right to confirm, then copy and paste the generated code directly into your Ionic project.
+            </ion-card-content>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+</ion-content>
