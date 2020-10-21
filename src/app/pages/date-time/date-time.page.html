@@ -2,6 +2,13 @@
 
 <ion-content>
 
+
+  <ion-item>
+      <ion-label>PicksOptions Ejemplos</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD"
+              [pickerOptions]="customPikerOption"></ion-datetime>
+  </ion-item>
+
 <ion-item>
   <ion-label>MMMM</ion-label>
   <ion-datetime displayFormat="MMMM" value="2012-12-15T13:47:20.789"></ion-datetime>
@@ -31,7 +38,7 @@
 
 <ion-item>
   <ion-label position="floating">MM/DD/YYYY</ion-label>
-  <ion-datetime displayFormat="MM/DD/YYYY" min="1986-12-14" max="2026-12-09" value="2020-10-20T15:03:46.789"></ion-datetime>
+  <ion-datetime displayFormat="MM/DD/YYYY" [pickerOptions]="customPikerOption" min="1986-12-14" max="2026-12-09" value="2020-10-20T15:03:46.789"></ion-datetime>
 </ion-item>
 
 <ion-item>

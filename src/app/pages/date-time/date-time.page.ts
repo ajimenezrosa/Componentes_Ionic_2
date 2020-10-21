@@ -7,7 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DateTimePage implements OnInit {
 
-  constructor() { }
+
+  customPikerOption = {
+    buttons: [{
+        text: 'Save',
+        handler: () => console.log('Click save!')
+    },
+    {
+      text: 'Log',
+      handler: () => {
+          console.log('Clicked log. Do not Dismiss');
+          return false;
+      }
+    }
+  ]
+  };
+
+  constructor() {
+
+
+   }
 
   ngOnInit() {
   }
@@ -17,5 +36,10 @@ export class DateTimePage implements OnInit {
       // Recuperar la fecha a un tipo fecha de javascript
       console.log( new Date(event.detail.value));
   }
+
+  
+
+
+
 
 }
