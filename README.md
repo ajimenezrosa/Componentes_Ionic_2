@@ -1,4 +1,11 @@
-"# Componentes_Ionic_2" 
+# UI Components
+
+![](https://blog.enginesoft.in/wp-content/uploads/2018/09/ionic.png)
+
+### Ionic apps are made of high-level building blocks called Components, which allow you to quickly construct the UI for your app. Ionic comes stock with a number of components, including cards, lists, and tabs. Once you’re familiar with the basics, refer to the API Index for a complete list of each component and sub-component.
+
+
+
 ## ion-action-sheet
 
 ![imagen](https://masteringionic.com/perch/resources/actionsheet-select-menu.png)
@@ -667,6 +674,7 @@ export class HomePage {
 
 
 # ion-datetime
+![](https://i.stack.imgur.com/vZgfX.png)
 
 #### Datetimes present a picker interface from the bottom of a page, making it easy for users to select dates and times. The picker displays scrollable columns that can be used to individually select years, months, days, hours and minute values. Datetimes are similar to the native ***input*** elements of type ***datetime-local***, however, Ionic's Datetime component makes it easy to display the date and time in a preferred format, and manage the datetime values.
 

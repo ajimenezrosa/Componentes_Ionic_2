@@ -12,4 +12,10 @@ export class DateTimePage implements OnInit {
   ngOnInit() {
   }
 
+  cambioFecha( event ) {
+      console.log(event);
+      // Recuperar la fecha a un tipo fecha de javascript
+      console.log( new Date(event.detail.value));
+  }
+
 }
