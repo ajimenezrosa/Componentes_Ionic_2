@@ -849,3 +849,397 @@ export class MyComponent {
 [Ionic pages ion-datetime][Documentation from ionic page]
 
 [Documentation from ionic page]:https://ionicframework.com/docs/api/datetime
+
+
+# 
+
+# ion-fab
+
+
+
+#### Fabs are container elements that contain one or more fab buttons. They should be placed in a fixed position that does not scroll with the content. Fab should have one main fab-button. Fabs can also contain fab-lists which contain related buttons that show when the main fab button is clicked. The same fab container can contain several fab-list elements with different side values.
+
+# 
+
+## Usage
+
+~~~javascript
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Header</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- fab placed to the top end -->
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- fab placed to the bottom end -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="arrow-forward-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- fab placed to the top start -->
+  <ion-fab vertical="top" horizontal="start" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="arrow-back-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- fab placed to the bottom start -->
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="arrow-up-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- fab placed to the (vertical) center and start -->
+  <ion-fab vertical="center" horizontal="start" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- fab placed to the (vertical) center and end -->
+  <ion-fab vertical="center" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- fab placed to the top and end and on the top edge of the content overlapping header -->
+  <ion-fab vertical="top" horizontal="end" edge slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="person"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- fab placed to the bottom and start and on the bottom edge of the content overlapping footer with a list to the right -->
+  <ion-fab vertical="bottom" horizontal="start" edge slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="settings"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="end">
+      <ion-fab-button><ion-icon name="logo-vimeo"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <!-- fab placed in the center of the content with a list on each side -->
+  <ion-fab vertical="center" horizontal="center" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button><ion-icon name="logo-vimeo"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="bottom">
+      <ion-fab-button><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="start">
+      <ion-fab-button><ion-icon name="logo-instagram"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="end">
+      <ion-fab-button><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Footer</ion-title>
+  </ion-toolbar>
+</ion-footer>
+~~~
+
+
+
+## Properties
+### activated
+|Description	|If true, both the **ion-fab-button** and all **ion-fab-list** inside **ion-fab** will become active. That means **ion-fab-button** will become a ***close*** icon and **ion-fab-list** will become visible.|
+|----------------------|--------------------------|
+|Attribute|	activated|
+|Type|	boolean|
+|Default|	false|
+
+
+
+
+
+## snippet-css.scss
+
+~~~scss
+/** Color **/
+
+--ion-color-youtube: #ff0011;
+--ion-color-youtube-rgb: 255,0,17;
+--ion-color-youtube-contrast: #ffffff;
+--ion-color-youtube-contrast-rgb: 255,255,255;
+--ion-color-youtube-shade: #e0000f;
+--ion-color-youtube-tint: #ff1a29;
+
+.ion-color-youtube {
+  --ion-color-base: var(--ion-color-youtube) !important;
+  --ion-color-base-rgb: var(--ion-color-youtube-rgb) !important;
+  --ion-color-contrast: var(--ion-color-youtube-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-youtube-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-youtube-shade) !important;
+  --ion-color-tint: var(--ion-color-youtube-tint) !important;
+}
+~~~
+
+## variables-completo.scss
+~~~scss
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+/** Ionic CSS Variables **/
+:root {
+  /** primary **/
+  --ion-color-primary: #3880ff;
+  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #3171e0;
+  --ion-color-primary-tint: #4c8dff;
+
+  /** secondary **/
+  --ion-color-secondary: #0cd1e8;
+  --ion-color-secondary-rgb: 12, 209, 232;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #0bb8cc;
+  --ion-color-secondary-tint: #24d6ea;
+
+  /** tertiary **/
+  --ion-color-tertiary: #7044ff;
+  --ion-color-tertiary-rgb: 112, 68, 255;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #633ce0;
+  --ion-color-tertiary-tint: #7e57ff;
+
+  /** success **/
+  --ion-color-success: #10dc60;
+  --ion-color-success-rgb: 16, 220, 96;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #0ec254;
+  --ion-color-success-tint: #28e070;
+
+  /** warning **/
+  --ion-color-warning: #ffce00;
+  --ion-color-warning-rgb: 255, 206, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #e0b500;
+  --ion-color-warning-tint: #ffd31a;
+
+  /** danger **/
+  --ion-color-danger: #f04141;
+  --ion-color-danger-rgb: 245, 61, 61;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d33939;
+  --ion-color-danger-tint: #f25454;
+
+  /** dark **/
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 34, 34;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  /** medium **/
+  --ion-color-medium: #989aa2;
+  --ion-color-medium-rgb: 152, 154, 162;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #86888f;
+  --ion-color-medium-tint: #a2a4ab;
+
+  /** light **/
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 244, 244;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+
+
+  --ion-color-youtube: #ff0011;
+  --ion-color-youtube-rgb: 255,0,17;
+  --ion-color-youtube-contrast: #ffffff;
+  --ion-color-youtube-contrast-rgb: 255,255,255;
+  --ion-color-youtube-shade: #e0000f;
+  --ion-color-youtube-tint: #ff1a29;
+
+  --ion-color-google: #ff0011;
+  --ion-color-google-rgb: 255,0,17;
+  --ion-color-google-contrast: #ffffff;
+  --ion-color-google-contrast-rgb: 255,255,255;
+  --ion-color-google-shade: #e0000f;
+  --ion-color-google-tint: #ff1a29;
+
+  --ion-color-twitter: #5bbcff;
+  --ion-color-twitter-rgb: 91,188,255;
+  --ion-color-twitter-contrast: white;
+  --ion-color-twitter-contrast-rgb: 0,0,0;
+  --ion-color-twitter-shade: #50a5e0;
+  --ion-color-twitter-tint: #6bc3ff;
+
+  --ion-color-vimeo: #5bbcff;
+  --ion-color-vimeo-rgb: 91,188,255;
+  --ion-color-vimeo-contrast: white;
+  --ion-color-vimeo-contrast-rgb: 0,0,0;
+  --ion-color-vimeo-shade: #50a5e0;
+  --ion-color-vimeo-tint: #6bc3ff;
+
+  --ion-color-facebook: #1f00d1;
+  --ion-color-facebook-rgb: 31,0,209;
+  --ion-color-facebook-contrast: #ffffff;
+  --ion-color-facebook-contrast-rgb: 255,255,255;
+  --ion-color-facebook-shade: #1b00b8;
+  --ion-color-facebook-tint: #351ad6;
+
+  --ion-color-github: #000000;
+  --ion-color-github-rgb: 0,0,0;
+  --ion-color-github-contrast: #ffffff;
+  --ion-color-github-contrast-rgb: 255,255,255;
+  --ion-color-github-shade: #000000;
+  --ion-color-github-tint: #1a1a1a;
+
+}
+
+.ion-color-youtube {
+  --ion-color-base: var(--ion-color-youtube) !important;
+  --ion-color-base-rgb: var(--ion-color-youtube-rgb) !important;
+  --ion-color-contrast: var(--ion-color-youtube-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-youtube-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-youtube-shade) !important;
+  --ion-color-tint: var(--ion-color-youtube-tint) !important;
+}
+
+.ion-color-google {
+  --ion-color-base: var(--ion-color-google) !important;
+  --ion-color-base-rgb: var(--ion-color-google-rgb) !important;
+  --ion-color-contrast: var(--ion-color-google-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-google-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-google-shade) !important;
+  --ion-color-tint: var(--ion-color-google-tint) !important;
+}
+
+.ion-color-twitter {
+  --ion-color-base: var(--ion-color-twitter) !important;
+  --ion-color-base-rgb: var(--ion-color-twitter-rgb) !important;
+  --ion-color-contrast: var(--ion-color-twitter-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-twitter-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-twitter-shade) !important;
+  --ion-color-tint: var(--ion-color-twitter-tint) !important;
+}
+
+.ion-color-vimeo {
+  --ion-color-base: var(--ion-color-vimeo) !important;
+  --ion-color-base-rgb: var(--ion-color-vimeo-rgb) !important;
+  --ion-color-contrast: var(--ion-color-vimeo-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-vimeo-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-vimeo-shade) !important;
+  --ion-color-tint: var(--ion-color-vimeo-tint) !important;
+}
+
+.ion-color-facebook {
+  --ion-color-base: var(--ion-color-facebook) !important;
+  --ion-color-base-rgb: var(--ion-color-facebook-rgb) !important;
+  --ion-color-contrast: var(--ion-color-facebook-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-facebook-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-facebook-shade) !important;
+  --ion-color-tint: var(--ion-color-facebook-tint) !important;
+}
+
+.ion-color-github {
+  --ion-color-base: var(--ion-color-github) !important;
+  --ion-color-base-rgb: var(--ion-color-github-rgb) !important;
+  --ion-color-contrast: var(--ion-color-github-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-github-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-github-shade) !important;
+  --ion-color-tint: var(--ion-color-github-tint) !important;
+}
+~~~
+
+
+
+
+# Color Generator
+### Create custom color palettes for your app’s UI. Update a color’s hex values, check the demo app on the right to confirm, then copy and paste the generated code directly into your Ionic project.
+
+[Ionic pages ion-datetime][Generacion de colores]
+
+[Generacion de colores]:https://ionicframework.com/docs/theming/color-generator/
+
+# 
+#### 
+
+~~~javascript
+<app-header titulo="Fab"></app-header>
+
+<ion-content>
+
+
+
+<ion-fab vertical="bottom" horizontal="end" color="primary" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-list side="top" >
+        <ion-fab-button>
+            <ion-icon name="logo-facebook" color="facebook"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+            <ion-icon name="logo-twitter" color="twitter"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+            <ion-icon name="logo-youtube" color="youtube"></ion-icon>
+        </ion-fab-button>
+    </ion-fab-list>
+
+    <ion-fab-list side="start" >
+        <ion-fab-button>
+            <ion-icon name="logo-vimeo" color="vimeo"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+            <ion-icon name="logo-google" color="google"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+            <ion-icon name="logo-github" color="github"></ion-icon>
+        </ion-fab-button>
+    </ion-fab-list>
+
+</ion-fab>
+
+  <ion-list>
+      <ion-item *ngFor="let item of data; let i = index">
+          <ion-label>Item {{ i + 1}}</ion-label>
+      </ion-item>
+  </ion-list>
+
+</ion-content>
+
+
+<footer>
+    <ion-toolbar color="twitter">
+          <ion-title >Footer</ion-title>
+    </ion-toolbar>
+</footer>
+~~~
+
+
+# 
+
+

@@ -1,0 +1,55 @@
+<app-header titulo="Fab"></app-header>
+
+<ion-content>
+
+
+
+<ion-fab vertical="bottom" horizontal="end" color="primary" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-list side="top" >
+        <ion-fab-button>
+            <ion-icon name="logo-facebook" color="facebook"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+            <ion-icon name="logo-twitter" color="twitter"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+            <ion-icon name="logo-youtube" color="youtube"></ion-icon>
+        </ion-fab-button>
+    </ion-fab-list>
+
+    <ion-fab-list side="start" >
+        <ion-fab-button>
+            <ion-icon name="logo-vimeo" color="vimeo"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+            <ion-icon name="logo-google" color="google"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+            <ion-icon name="logo-github" color="github"></ion-icon>
+        </ion-fab-button>
+    </ion-fab-list>
+
+</ion-fab>
+
+
+  <ion-list>
+      <ion-item *ngFor="let item of data; let i = index">
+          <ion-label>Item {{ i + 1}}</ion-label>
+      </ion-item>
+  </ion-list>
+
+
+
+
+</ion-content>
+
+
+<footer>
+    <ion-toolbar color="twitter">
+          <ion-title >Footer</ion-title>
+    </ion-toolbar>
+</footer>
