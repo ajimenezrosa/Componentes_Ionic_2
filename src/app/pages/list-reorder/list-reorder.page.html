@@ -6,19 +6,26 @@
     </ion-buttons>
 
     <ion-title color="primary" >List - Reorder</ion-title>
+
+          <ion-buttons slot="end">
+          <ion-button (click)="toggleReorder()"><ion-icon name="git-compare-sharp"></ion-icon></ion-button>
+        </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
     <ion-list>
-      <ion-reorder-group disabled="false"
+      <ion-reorder-group [disabled]="reorderV"
             (ionItemReorder)="doReorder($event)"
                   >
 
         <ion-item *ngFor="let personaje of personajes">
               <ion-label>{{  personaje  }}</ion-label>
-          <ion-reorder slot="end"></ion-reorder>
+          <ion-reorder slot="end">
+          <ion-icon name="git-compare-sharp"></ion-icon>
+          </ion-reorder>
         </ion-item>
     </ion-reorder-group>
     </ion-list>

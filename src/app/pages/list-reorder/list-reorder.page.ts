@@ -10,6 +10,8 @@ export class ListReorderPage implements OnInit {
 
   personajes = ["Aquaman", "Superman","Batman","Mujer Maravilla","Flash","Iron Fist","Robin"];
 
+  reorderV: boolean = true;
+
   constructor() { }
 
   ngOnInit() {
@@ -28,5 +30,11 @@ export class ListReorderPage implements OnInit {
 
     console.log(this.personajes);
   }
+
+  toggleReorder(){
+    this.reorderV = !this.reorderV;
+  }
+
+
 
 }
