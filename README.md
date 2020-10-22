@@ -2847,6 +2847,7 @@ constructor(private menu: MenuController) { }
 
 # CSS Custom Properties
 |Name|	Description|
+|----------------|------------------|
 |--background|	Background of the menu|
 |--height|	Height of the menu|
 |--max-height|	Maximum height of the menu|
