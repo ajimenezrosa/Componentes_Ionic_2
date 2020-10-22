@@ -1878,3 +1878,90 @@ Default|	0|
 |--placeholder-font-style|	Font style of the input placeholder text|
 |--placeholder-font-weight|	Font weight of the input placeholder text|
 |--placeholder-opacity|	Opacity of the input placeholder text|
+
+
+
+
+#### In this example we put a code in which we create a form in Ionic Angular and validate it.
+
+#### This form validates an object called user in the form's .ts file.
+~~~html
+
+  <form  #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
+
+    <ion-list-header>
+      <ion-label>Formulario Valido: {{formulario.valid}}</ion-label>
+    </ion-list-header>
+  
+    <ion-item>
+        <ion-label>Email:</ion-label>
+        <ion-input type="email" 
+        required
+        name="email"
+        [(ngModel)]="usuario.email"
+        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+        placeholder="Email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Password:</ion-label>
+        <ion-input type="password" 
+                    name="password"
+                    [(ngModel)]="usuario.password"
+                    required
+                    placeholder="Password!" ></ion-input>
+    </ion-item>
+
+    <ion-button [disabled]="formulario.invalid"
+                type="submit" 
+                expand="block">
+          Guardar
+    </ion-button>
+
+  </form>
+
+~~~
+
+#### This would be the code used on the side of the ts file.
+#### it only occupies us with an object called user and the event called to validate the form from our button.
+
+#### Note: this botton is configured as a normal html submit
+
+~~~javascript
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-input',
+  templateUrl: './input.page.html',
+  styleUrls: ['./input.page.scss'],
+})
+export class InputPage implements OnInit {
+
+  nombre: string = 'Alejandro';
+
+  usuario = {
+    email: '',
+    password: ''
+
+  }
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+
+  onSubmit(formulario: ngForm) {
+    
+    // to get information from object.
+    console.log("submit", this.usuario);
+
+    //I can get informacion from the forms too.abs
+    console.log(formulario);
+
+  }
+
+}
+
+~~~
+
