@@ -2456,6 +2456,8 @@ doReorder(event) {
 
 # ion-loading
 
+![](https://hoshcoding.com/storage/posts_thumbs/post2019_5cbb40dce636d.jpg)
+
 #### An overlay that can be used to indicate activity while blocking user interaction. The loading indicator appears on top of the app's content, and can be dismissed by the app to resume user interaction with the app. It includes an optional backdrop, which can be disabled by setting showBackdrop: false upon creation.
 
 ## Dismissing
@@ -2660,7 +2662,7 @@ export class LoadingExample {
 
 
 # ion-menu
-
+![](https://i.ytimg.com/vi/I82_roQSgco/maxresdefault.jpg)
 #### The Menu component is a navigation drawer that slides in from the side of the current view. By default, it slides in from the left, but the side can be overridden. The menu will be displayed differently based on the mode, however the display type can be changed to any of the available menu types. The menu element should be a sibling to the root content element. There can be any number of menus attached to the content. These can be controlled from the templates, or programmatically using the MenuController.
 
 # Usage
