@@ -1867,6 +1867,7 @@ Default|	0|
 
 ## CSS Custom Properties
 |Name|	Description|
+|-----------------|-------------------------|
 |--background|	Background of the input|
 |--color|	Color of the input text|
 |--padding-bottom	| Bottom padding of the input|
