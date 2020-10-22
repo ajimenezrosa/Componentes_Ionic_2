@@ -1929,6 +1929,12 @@ Default|	0|
 
 ~~~
 
+#### Email validation in the ion-input field, using the following instruction, you validate that the structure of the email field is that of a real email.
+~~~javascript
+      pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+~~~
+
+
 #### This would be the code used on the side of the ts file.
 #### it only occupies us with an object called user and the event called to validate the form from our button.
 
@@ -2290,3 +2296,159 @@ file .ts
         }
 
 ~~~
+
+# 
+
+# ion-reorder
+
+![](https://www.freakyjolly.com/wp-content/uploads/2019/03/Ionic-4-ion-reorder.gif)
+
+#### Reorder is a component that allows an item in a group of items to be dragged to change its order within that group. It must be used within an ion-reorder-group to provide a visual drag and drop interface.
+
+#### ion-reorder is the anchor used to drag and drop the items inside of the ion-reorder-group. See the Reorder Group for more information on how to complete the reorder operation.
+
+# Usage
+~~~html
+<!-- The reorder gesture is disabled by default, enable it to drag and drop items -->
+<ion-reorder-group disabled="false">
+  <!-- Default reorder icon, end aligned items -->
+  <ion-item>
+    <ion-label>
+      Item 1
+    </ion-label>
+    <ion-reorder slot="end"></ion-reorder>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      Item 2
+    </ion-label>
+    <ion-reorder slot="end"></ion-reorder>
+  </ion-item>
+
+  <!-- Default reorder icon, start aligned items -->
+  <ion-item>
+    <ion-reorder slot="start"></ion-reorder>
+    <ion-label>
+      Item 3
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-reorder slot="start"></ion-reorder>
+    <ion-label>
+      Item 4
+    </ion-label>
+  </ion-item>
+
+  <!-- Custom reorder icon end items -->
+  <ion-item>
+    <ion-label>
+      Item 5
+    </ion-label>
+    <ion-reorder slot="end">
+      <ion-icon name="pizza"></ion-icon>
+    </ion-reorder>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      Item 6
+    </ion-label>
+    <ion-reorder slot="end">
+      <ion-icon name="pizza"></ion-icon>
+    </ion-reorder>
+  </ion-item>
+
+  <!-- Items wrapped in a reorder, entire item can be dragged -->
+  <ion-reorder>
+    <ion-item>
+      <ion-label>
+        Item 7
+      </ion-label>
+    </ion-item>
+  </ion-reorder>
+
+  <ion-reorder>
+    <ion-item>
+      <ion-label>
+        Item 8
+      </ion-label>
+    </ion-item>
+  </ion-reorder>
+</ion-reorder-group>
+~~~
+# 
+
+# CSS Shadow Parts
+|Name|	Description |
+|---------------|----------------|
+|icon|	The icon of the reorder handle (uses ion-icon).|
+
+
+Practice:
+Html file.
+~~~html
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/" color="primary"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title color="primary" >List - Reorder</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+      <ion-reorder-group disabled="false"
+            (ionItemReorder)="doReorder($event)"
+                  >
+
+        <ion-item *ngFor="let personaje of personajes">
+              <ion-label>{{  personaje  }}</ion-label>
+          <ion-reorder slot="end"></ion-reorder>
+        </ion-item>
+    </ion-reorder-group>
+    </ion-list>
+
+</ion-content>
+
+~~~
+
+javascript file
+~~~javascript
+                  .
+                  .
+                  .
+                  .
+                  .
+                  .
+  personajes = ["Aquaman", "Superman","Batman","Mujer Maravilla","Flash","Iron Fist","Robin"];
+                  .
+                  .
+                  .
+                  .
+                  .
+                  .
+doReorder(event) {
+    console.log(event);
+    //con esta instruccion cortamos un elemento delarreglo
+    //with this instruction we cut an element of the array
+    const itemMover = this.personajes.splice(event.detail.from, 1)[0];
+
+    //con esta instruccion insertamos en el arreglo el elemento cortado
+    //with this instruction we insert the cut element into the arrangement
+    this.personajes.splice(event.detail.to, 0, itemMover);
+    
+    
+    event.detail.complete();
+
+    console.log(this.personajes);
+  }
+~~~
+
+
+
