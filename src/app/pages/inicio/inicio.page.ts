@@ -80,6 +80,13 @@ export class InicioPage implements OnInit {
         redirectTo: '/input'
       }
 
+      ,
+      {
+        icon: 'list-outline',
+        name: 'Lista',
+        redirectTo: '/lista'
+      }
+
 
 
 

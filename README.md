@@ -1972,3 +1972,321 @@ export class InputPage implements OnInit {
 
 ~~~
 
+
+# 
+
+# Ion List
+
+
+https://jsonplaceholder.typicode.com/users
+
+
+~~~javascript
+//import from @angular/common
+import { HttpClientModule } from '@angular/common/http';
+
+//set de HttpClientModule on app.module.ts imports
+@NgModule({
+  declarations: [AppComponent],
+  entryComponents: [],
+  imports: [BrowserModule,
+     IonicModule.forRoot(), 
+     AppRoutingModule,
+     HttpClientModule
+    
+    ]
+~~~
+# 
+# ion-item-sliding
+
+#### A sliding item contains an item that can be dragged to reveal buttons. It requires an item component as a child. All options to reveal should be placed in the item options element.
+#
+
+# Swipe Direction
+#### By default, the buttons are placed on the **"end"** side. This means that options are revealed when the sliding item is swiped from end to start, i.e. from right to left in LTR, but from left to right in RTL. To place them on the opposite side, so that they are revealed when swiping in the opposite direction, set the side attribute to **"start"** on the ***ion-item-options*** element. Up to two ion-item-options can be used at the same time in order to reveal two different sets of options depending on the swiping direction.
+#
+
+# Options Layout
+#### By default if an icon is placed with text in the item option, it will display the icon on top of the text, but the icon slot can be changed to any of the following to position it in the option.
+
+|Slot|	Description|
+|------------|------------------|
+|start|	In LTR, start is the left side of the button, and in RTL it is the right|
+|top|	The icon is above the text|
+|icon-only|	The icon is the only content of the button|
+|bottom|	The icon is below the text|
+|end|	In LTR, end is the right side of the button, and in RTL it is the left|
+#
+
+# Expandable Options
+#### Options can be expanded to take up the full width of the item if you swipe past a certain point. This can be combined with the ionSwipe event to call methods on the class.
+
+# Usage
+~~~html
+<ion-list>
+  <!-- Sliding item with text options on both sides -->
+  <ion-item-sliding>
+    <ion-item-options side="start">
+      <ion-item-option (click)="favorite(item)">Favorite</ion-item-option>
+      <ion-item-option color="danger" (click)="share(item)">Share</ion-item-option>
+    </ion-item-options>
+
+    <ion-item>
+      <ion-label>Item Options</ion-label>
+    </ion-item>
+
+    <ion-item-options side="end">
+      <ion-item-option (click)="unread(item)">Unread</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <!-- Sliding item with expandable options on both sides -->
+  <ion-item-sliding>
+    <ion-item-options side="start">
+      <ion-item-option color="danger" expandable>
+        Delete
+      </ion-item-option>
+    </ion-item-options>
+
+    <ion-item>
+      <ion-label>Expandable Options</ion-label>
+    </ion-item>
+
+    <ion-item-options side="end">
+      <ion-item-option color="tertiary" expandable>
+        Archive
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <!-- Multi-line sliding item with icon options on both sides -->
+  <ion-item-sliding id="item100">
+    <ion-item href="#">
+      <ion-label>
+        <h2>HubStruck Notifications</h2>
+        <p>A new message in your network</p>
+        <p>Oceanic Next has joined your network</p>
+      </ion-label>
+      <ion-note slot="end">
+        10:45 AM
+      </ion-note>
+    </ion-item>
+
+    <ion-item-options side="start">
+      <ion-item-option>
+        <ion-icon slot="icon-only" name="heart"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+
+    <ion-item-options side="end">
+      <ion-item-option color="danger">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-item-option>
+      <ion-item-option>
+        <ion-icon slot="icon-only" name="star"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <!-- Sliding item with icon start options on end side -->
+  <ion-item-sliding>
+    <ion-item>
+      <ion-label>
+        Sliding Item, Icons Start
+      </ion-label>
+    </ion-item>
+    <ion-item-options>
+      <ion-item-option color="primary">
+        <ion-icon slot="start" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+        More
+      </ion-item-option>
+      <ion-item-option color="secondary">
+        <ion-icon slot="start" name="archive"></ion-icon>
+        Archive
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <!-- Sliding item with icon end options on end side -->
+  <ion-item-sliding>
+    <ion-item>
+      <ion-label>
+        Sliding Item, Icons End
+      </ion-label>
+    </ion-item>
+    <ion-item-options>
+      <ion-item-option color="primary">
+        <ion-icon slot="end" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+        More
+      </ion-item-option>
+      <ion-item-option color="secondary">
+        <ion-icon slot="end" name="archive"></ion-icon>
+        Archive
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <!-- Sliding item with icon top options on end side -->
+  <ion-item-sliding>
+    <ion-item>
+      <ion-label>
+        Sliding Item, Icons Top
+      </ion-label>
+    </ion-item>
+    <ion-item-options>
+      <ion-item-option color="primary">
+        <ion-icon slot="top" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+        More
+      </ion-item-option>
+      <ion-item-option color="secondary">
+        <ion-icon slot="top" name="archive"></ion-icon>
+        Archive
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <!-- Sliding item with icon bottom options on end side -->
+  <ion-item-sliding>
+    <ion-item>
+      <ion-label>
+        Sliding Item, Icons Bottom
+      </ion-label>
+    </ion-item>
+    <ion-item-options>
+      <ion-item-option color="primary">
+        <ion-icon slot="bottom" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+        More
+      </ion-item-option>
+      <ion-item-option color="secondary">
+        <ion-icon slot="bottom" name="archive"></ion-icon>
+        Archive
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+~~~
+
+# 
+
+# Properties
+### disabled
+|Description	|If true, the user cannot interact with the sliding item.|
+|----------------|----------------|
+|Attribute|	disabled|
+|Type|	boolean|
+|Default|	false|
+
+#
+
+# Events
+|Name|	Description|
+|--------------|-----------------|
+|ionDrag	|Emitted when the sliding position changes.|
+# 
+# Methods
+## close
+|Description	|Close the sliding item. Items can also be closed from the List.|
+|--------------|----------------|
+|Signature|	close() => Promise<void>|
+
+## closeOpened
+|Description	|Close all of the sliding items in the list. Items can also be closed from the List.|
+|------------------|-------------------|
+|Signature|	closeOpened() => Promise<boolean>|
+# 
+
+## getOpenAmount
+|Description	|Get the amount the item is open in pixels.|
+|------------|------------------|
+|Signature|	getOpenAmount() => Promise<number>|
+# 
+
+## getSlidingRatio
+|Description	|Get the ratio of the open amount of the item compared to the width of the options. If the number returned is positive, then the options on the right side are open. If the number returned is negative, then the options on the left side are open. If the absolute value of the number is greater than 1, the item is open more than the width of the options.|
+|-----------|----------------|
+|Signature|	getSlidingRatio() => Promise<number>|
+
+#
+# open
+|Description	|Open the sliding item.|
+|--------------|---------------------|
+|Signature|	open(side: Side | undefined) => Promise<void>|
+
+
+
+#
+![](https://www.positronx.io/wp-content/uploads/2019/12/ionic-list-8060-02.png)
+
+
+~~~html
+<app-header titulo="List - sliding"></app-header>
+
+<ion-content>
+
+  <ion-list>
+
+
+  <ion-item-sliding *ngFor="let user of usuarios | async">
+    <ion-item-options side="start">
+      <ion-item-option (click)="favorite(user)">
+          <ion-icon name="star-outline"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="secondary" (click)="share(user)">
+          <ion-icon name="share-outline"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+
+         <ion-item >
+        <ion-label>
+          <h3>{{ user.name}}</h3>
+          <p>{{ user.email}}</p>
+        </ion-label>
+        <ion-label slot="end" class="ion-text-end text-small" >{{user.phone}}</ion-label>
+      </ion-item>
+
+    <ion-item-options side="end">
+      <ion-item-option color="danger" (click)="trash(user)">
+          <ion-icon name="trash-outline"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  
+      <ion-item *ngFor="let user of usuarios | async">
+        <ion-label>
+          <h3>{{ user.name}}</h3>
+          <p>{{ user.email}}</p>
+        </ion-label>
+        <ion-label slot="end" class="ion-text-end text-small" >{{user.phone}}</ion-label>
+      </ion-item>
+  </ion-list>
+
+</ion-content>
+
+~~~
+
+file .ts
+
+~~~javascript
+@ViewChild(IonList) ionlist: IonList; 
+        .
+        .
+        .
+        share(user){
+          console.log('Share:' , user);
+          this.ionlist.closeSlidingItems();
+        }
+
+        favorite(user) {
+          console.log('Favorite:' , user);
+          this.ionlist.closeSlidingItems();
+
+        }
+        trash(user) {
+
+          console.log('delete:' , user);
+          this.ionlist.closeSlidingItems();
+
+        }
+
+~~~

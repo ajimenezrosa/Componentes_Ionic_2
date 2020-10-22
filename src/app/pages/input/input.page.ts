@@ -21,7 +21,7 @@ export class InputPage implements OnInit {
   }
 
 
-  onSubmit(formulario: ngForm) {
+  onSubmit(formulario) {
     
     // to get information from object.
     console.log("submit", this.usuario);
