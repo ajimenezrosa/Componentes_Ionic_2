@@ -3134,11 +3134,10 @@ const Home: React.FC<HomePageProps> = ({ router }) => {
   }
 ~~~
 
-### Un data interesante es que podemos extraer la data de dos formas distintas.
-### utilizando el onDidDismiss y el onWillDismiss la diferencia de estos dos modos es la siguiente.
- - el onDidDismiss se ejecuta depues de cerrar el formulario hijo
-
-- el onWillDismiss se ejecuta momentos antes de cerrar el formulario hijo
+### An interesting data is that we can extract the data in two different ways.
+### Using the onDidDismiss and the onWillDismiss the difference of these two modes is the following.
+- the onDidDismiss is executed after closing the child form
+- the onWillDismiss runs just before closing the child form
 
 ### On the side of the info modal we will have the following code when we exit which sends us this data that can be captured on the screen where we call the modal.
 
