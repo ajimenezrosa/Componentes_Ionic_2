@@ -3111,8 +3111,46 @@ const Home: React.FC<HomePageProps> = ({ router }) => {
 #
 
 
+#### An interesting example would be how we can pass parameters from one page to another in our Modal.
 
+#### For the same we have an example of the code that shows us how we can send parameters to our Modal info page.
 
+~~~javascript
+ async MostrarModal() {
+    const modal = await this.modalCtrl.create({
+      component: ModalInfoPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        nombre: 'Alejandro',
+        pais: 'Republica Dominicana',
+        email: 'ja.jimenezrosa@gmail.com'
+      }
+    });
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+    console.log(data);
+
+  }
+~~~
+
+### Un data interesante es que podemos extraer la data de dos formas distintas.
+### utilizando el onDidDismiss y el onWillDismiss la diferencia de estos dos modos es la siguiente.
+ - el onDidDismiss se ejecuta depues de cerrar el formulario hijo
+
+- el onWillDismiss se ejecuta momentos antes de cerrar el formulario hijo
+
+### On the side of the info modal we will have the following code when we exit which sends us this data that can be captured on the screen where we call the modal.
+
+~~~javascript
+  gooutwitharguments() {
+    this.modalCtrl.dismiss({
+      nombre: 'Oscar',
+      pais: 'Espana',
+      email: 'oscarSampel@gmail.com' 
+    });
+  }
+~~~
 
 
 
