@@ -3151,5 +3151,193 @@ const Home: React.FC<HomePageProps> = ({ router }) => {
   }
 ~~~
 
+#
+
+
+#
+
+
+# ion-popover
+
+|Ion Modal| Ion Modal| Ion Modal |
+|----------------------------|-------------------|-------------------|
+|![](https://3.bp.blogspot.com/-261P9kkkHvQ/WSBdCjW_plI/AAAAAAAAEq4/6H2WHK4p-44eERjcPCNhAqwnZXtnuYtQgCLcB/s640/popover1.png)|![](https://i.stack.imgur.com/7T6b1.png)|![](https://static.javatpoint.com/tutorial/ionic/images/ionic-popover2.png)|
+
+#### A Popover is a dialog that appears on top of the current page. It can be used for anything, but generally it is used for overflow actions that don't fit in the navigation bar.
+
+## Presenting
+#### To present a popover, call the present method on a popover instance. In order to position the popover relative to the element clicked, a click event needs to be passed into the options of the the present method. If the event is not passed, the popover will be positioned in the center of the viewport.
+
+## Customization
+#### Popover uses scoped encapsulation, which means it will automatically scope its CSS by appending each of the styles with an additional class at runtime. Overriding scoped selectors in CSS requires a higher specificity selector.
+
+#### We recommend passing a custom class to cssClass in the create method and using that to add custom styles to the host and inner elements. This property can also accept multiple classes separated by spaces. View the Usage section for an example of how to pass a class using cssClass.
+~~~Scss
+/* DOES NOT WORK - not specific enough */
+.popover-content {
+  background: #222;
+}
+
+/* Works - pass "my-custom-class" in cssClass to increase specificity */
+.my-custom-class .popover-content {
+  background: #222;
+}
+~~~
+
+#### Any of the defined CSS Custom Properties can be used to style the Popover without needing to target individual elements:
+~~~scss
+.my-custom-class {
+  --background: #222;
+}
+~~~~
+~~~
+If you are building an Ionic Angular app, the styles need to be added to a global stylesheet file. Read Style Placement in the Angular section below for more information.
+~~~
+
+# Usage
+~~~javascript
+import { Component } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponent } from '../../component/popover/popover.component';
+
+@Component({
+  selector: 'popover-example',
+  templateUrl: 'popover-example.html',
+  styleUrls: ['./popover-example.css']
+})
+export class PopoverExample {
+  constructor(public popoverController: PopoverController) {}
+
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
+  }
+}
+~~~
+
+# Properties
+## animated
+|Description	|If true, the popover will animate.|
+|-------------------|------------------------|
+|Attribute|	animated|
+|Type|	boolean|
+|Default|	true|
+
+
+## backdropDismiss
+|Description|If true, the popover will be dismissed when the backdrop is clicked.|
+|---------------------|---------------------------|
+|Attribute|	backdrop-dismiss|
+|Type|	boolean|
+|Default|	true|
+
+# component
+|Description	|The component to display inside of the popover.|
+|-----------------------|---------------------------|
+|Attribute|	component|
+|Type"|	Function - HTMLElement - null - string|
+
+## componentProps
+|Description	|The data to pass to the popover component.|
+|--------------------------|--------------------------|
+|Type|	undefined - { [key: string]: any; }|
+
+## cssClass
+|Description	|Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.|
+|---------------------|------------------------|
+|Attribute|	css-class|
+|Type|	string - string[] - undefined|
+
+## enterAnimation
+|Description|Animation to use when the popover is presented.|
+|----------------|-----------------------|
+|Type|	((baseEl: any, opts?: any) => Animation) - undefined|
+
+## event
+|Description|The event to pass to the popover animation.|
+|----------------|---------------------|
+|Attribute|	event|
+|Type|	any|
+
+## keyboardClose
+|Description|If true, the keyboard will be automatically dismissed when the overlay is presented.|
+|--------------|------------------|
+|Attribute|	keyboard-close|
+|Type|	boolean|
+|Default|	true|
+
+## leaveAnimation
+|Description|Animation to use when the popover is dismissed.|
+|-----------------------|----------------------|
+|Type|	((baseEl: any, opts?: any) => Animation) - undefined|
+
+## mode
+|Description|The mode determines which platform styles to use.|
+|-------------------|-----------------------|
+|Attribute|	mode|
+|Type|	"ios" - "md"|
+
+## showBackdrop
+|Description|If true, a backdrop will be displayed behind the popover.|
+|-----------------|---------------------|
+|Attribute|	show-backdrop|
+|Type|	boolean|
+|Default|	true|
+
+# translucent
+|Description|If true, the popover will be translucent. Only applies when the mode is "ios" and the device supports backdrop-filter.|
+|----------------------|------------------------|
+|Attribute|	translucent|
+|Type|	boolean|
+|Default|	false|
+
+# Events
+|Name|	Description|
+|ionPopoverDidDismiss|	Emitted after the popover has dismissed.|
+|ionPopoverDidPresent|	Emitted after the popover has presented.|
+|ionPopoverWillDismiss|	Emitted before the popover has dismissed.|
+|ionPopoverWillPresent|	Emitted before the popover has presented.|
+
+# Methods
+## dismiss
+|Description	|Dismiss the popover overlay after it has been presented.|
+|---------------|-----------------|
+|Signature|	dismiss(data?: any, role?: string | undefined) => Promise<boolean>|
+
+## onDidDismiss
+|Description	|Returns a promise that resolves when the popover did dismiss.|
+|----------------|-------------------|
+|Signature|	onDidDismiss<T = any>() => Promise<OverlayEventDetail<T>>|
+
+## onWillDismiss
+|Description	|Returns a promise that resolves when the popover will dismiss.|
+|---------------------|--------------------|
+|Signature|	onWillDismiss<T = any>() => Promise<OverlayEventDetail<T>>|
+
+## present
+|Description	|Present the popover overlay after it has been created.|
+|----------------------|--------------------------|
+|Signature|	present() => Promise<void>|
+
+# CSS Custom Properties
+|Name|	Description|
+|--backdrop-opacity|	Opacity of the backdrop|
+|--background|	Background of the popover|
+|--box-shadow|	Box shadow of the popover|
+|--height|	Height of the popover|
+|--max-height|	Maximum height of the popover|
+|--max-width|	Maximum width of the popover|
+|--min-height|	Minimum height of the popover|
+|--min-width|	Minimum width of the popover|
+|--width|	Width of the popover|
+
+
+
+
 
 
