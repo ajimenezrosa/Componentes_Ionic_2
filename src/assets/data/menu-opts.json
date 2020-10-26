@@ -90,4 +90,10 @@
     "name": "Popover",
     "redirectTo": "/popover"
   }
+  ,
+  {
+    "icon": "code-working-outline",
+    "name": "ProgressBar",
+    "redirectTo": "/progress"
+  }
 ]

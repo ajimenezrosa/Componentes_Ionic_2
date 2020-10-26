@@ -3439,3 +3439,263 @@ export class PopoverInfoComponent implements OnInit {
   }
 }
 ~~~
+
+# 
+
+# ion-progress-bar
+|     |       |        |
+|----------------------------|-------------------|-------------------|
+|![](https://camo.githubusercontent.com/f467d56fee7b8393fda2ff3b190d2bd6e7c771ef/68747470733a2f2f692e6779617a6f2e636f6d2f30333331313932393339663861393339303734363734643166623466653836352e676966)|![](https://help.sap.com/doc/c2d571df73104f72b9f1b73e06c5609a/Latest/en-US/docs/images/indicators.gif)|![](https://i.gifer.com/Ary4.gif)|
+
+#### ion-progress-bar is a horizontal progress bar to visualize the progression of an operation and activity. You can choose between two types: determinate and indeterminate.
+
+## Progress Type
+## Determinate
+#### If the percentage of an operation is known, you should use the determinate type. This is the default type and the progress is represented by the value property.
+
+#### A buffer shows circles as animation to indicate some activity. If the buffer property is smaller than 1 you can show the additional buffering progress.
+
+## Indeterminate
+#### If an operation is in progress and it's not necessary to indicate how long it will take.
+
+#### If you add reversed="true", you receive a query which is used to indicate pre-loading.
+
+# Usage
+~~~htm
+<!-- Default Progressbar -->
+<ion-progress-bar></ion-progress-bar>
+
+<!-- Default Progressbar with 50 percent -->
+<ion-progress-bar value="0.5"></ion-progress-bar>
+
+<!-- Colorize Progressbar -->
+<ion-progress-bar color="primary" value="0.5"></ion-progress-bar>
+<ion-progress-bar color="secondary" value="0.5"></ion-progress-bar>
+
+<!-- Other types -->
+<ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
+<ion-progress-bar type="indeterminate"></ion-progress-bar>
+<ion-progress-bar type="indeterminate" reversed="true"></ion-progress-bar>
+~~~
+
+# Properties
+## buffer
+|Description	|If the buffer and value are smaller than 1, the buffer circles will show. The buffer should be between [0, 1].|
+|-----------------------|-------------------------|
+|Attribute|	buffer|
+|Type|	number|
+|Default|	1|
+
+## color
+|Description	|The color to use from your application's color palette. Default options are: "primary", "secondary", "tertiary", "success", "warning", "danger", "light", "medium", and "dark". For more information on colors, see [theming]:(https://ionicframework.com/docs/theming/basics).|
+
+|Attribute|	color|
+|Type|	string - undefined|
+
+## mode
+|Description|The mode determines which platform styles to use.|
+|-----------------------------|--------------------------|
+|Attribute|	mode|
+|Type|	"ios" - "md"|
+
+## reversed
+|Description|If true, reverse the progress bar direction.|
+|----------------------|--------------------------|
+|Attribute|	reversed|
+|Type|	boolean|
+|Default|	false|
+
+## type
+|Description	|The state of the progress bar, based on if the time the process takes is known or not. Default options are: "**determinate**" (no animation), "**indeterminate**" (animate from left to right).|
+|---------------------|-------------------|
+|Attribute|	type|
+|Type|	"determinate" - "indeterminate"|
+|Default	|'determinate'|
+
+## value
+|Description	|The value determines how much of the active bar should display when the **type** is "**determinate**". The value should be between [0, 1].|
+|----------------------|-----------------------|
+|Attribute|	value|
+|Type|	number|
+|Default|	0|
+
+# CSS Custom Properties
+|Name|	Description|
+|---------------------|--------------------|
+|--background|	Same as --buffer-background when using a determinate progress bar, otherwise it styles the background of the ion-progress-bar itself.|
+|--buffer-background|	Color of the buffer bar|
+|--progress-background|	Color of the progress bar|
+
+#
+
+# ion-range
+![](https://i.stack.imgur.com/55qGO.png)
+
+#### The Range slider lets users select from a range of values by moving the slider knob. It can accept dual knobs, but by default one knob controls the value of the range.
+
+# Range Labels
+#### Labels can be placed on either side of the range by adding the slot="start" or slot="end" to the element. The element doesn't have to be an ion-label, it can be added to any element to place it to the left or right of the range.
+
+# Usage
+~~~htm
+<ion-list>
+  <ion-item>
+    <ion-range color="danger" pin="true"></ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-range min="-200" max="200" color="secondary">
+      <ion-label slot="start">-200</ion-label>
+      <ion-label slot="end">200</ion-label>
+    </ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-range min="20" max="80" step="2">
+      <ion-icon size="small" slot="start" name="sunny"></ion-icon>
+      <ion-icon slot="end" name="sunny"></ion-icon>
+    </ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-range min="1000" max="2000" step="100" snaps="true" color="secondary"></ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-range min="1000" max="2000" step="100" snaps="true" ticks="false" color="secondary"></ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-range dualKnobs="true" min="21" max="72" step="3" snaps="true"></ion-range>
+  </ion-item>
+</ion-list>
+~~~
+
+# Properties
+## color
+|Description	|The color to use from your application's color palette. Default options are: "**primary**", "**secondary**", "**tertiary**", "**success**", "**warning**", "**danger**", "**light**", "**medium**", and "**dark**". For more information on colors, see theming.|
+|---------------------|---------------------|
+|Attribute|	color|
+|Type|	string - undefined|
+
+## debounce
+|Description	|How long, in milliseconds, to wait to trigger the **ionChange** event after each change in the range value.|
+|-----------------|---------------------|
+|Attribute|	debounce|
+|Type|	number|
+|Default|	0|
+
+## disabled
+|Description|If true, the user cannot interact with the range.|
+|-----------------|---------------------|
+|Attribute|	disabled|
+|Type|	boolean|
+|Default|	false|
+
+## dualKnobs
+|Description	|Show two knobs.|
+|----------------|-----------------|
+|Attribute|	dual-knobs|
+|Type|	boolean|
+|Default|	false|
+
+## max
+|Description	|Maximum integer value of the range.|
+|---------------------|-----------------------|
+|Attribute|	max|
+|Type|	number|
+|Default|	100|
+
+## min
+|Description|Minimum integer value of the range.|
+|------------------|--------------------|
+|Attribute|	min|
+|Type|	number|
+|Default|	0|
+
+## mode
+|Description|The mode determines which platform styles to use.|
+|----------------------|----------------------|
+|Attribute|	mode|
+|Type|	"ios" - "md"|
+
+## name
+|Description	|The name of the control, which is submitted with the form data.|
+|---------------------|---------------------|
+|Attribute|	name|
+|Type|	string|
+|Default|	''|
+
+## pin
+|Description|If true, a pin with integer value is shown when the knob is pressed.|
+|---------------------|-----------------------|
+|Attribute|	pin|
+|Type|	boolean|
+|Default|	false|
+
+## snaps
+|Description	|If true, the knob snaps to tick marks evenly spaced based on the step property value.|
+|-----------------------|------------------------|
+|Attribute|	snaps|
+|Type|	boolean|
+|Default|	false|
+
+## step
+|Description	|Specifies the value granularity.|
+|-----------------------|-------------------|
+|Attribute|	step|
+|Type|	number|
+|Default|	1|
+
+## ticks
+|Description|	If true, tick marks are displayed based on the step value. Only applies when snaps is true.|
+|-----------------|-------------------|
+|Attribute|	ticks|
+|Type|	boolean|
+|Default|	true|
+
+## value
+|Description|the value of the range.|
+|------------------------|------------------------|
+|Attribute|	value|
+|Type|	number - { lower: number; upper: number; }|
+|Default|	0|
+
+## Events
+|Name|	Description|
+|ionBlur|	Emitted when the range loses focus.|
+|ionChange|	Emitted when the value property has changed.|
+|ionFocus|	Emitted when the range has focus.|
+
+# CSS Shadow Parts
+|Name|	Description|
+|----------------|----------------------|
+|bar|	The inactive part of the bar.|
+|bar-active|	The active part of the bar.|
+|knob|	The handle that is used to drag the range.|
+|pin|	The counter that appears above a knob.|
+|tick|	An inactive tick mark.|
+|tick-active|	An active tick mark.|
+
+# CSS Custom Properties
+|Name|	Description|
+|----------------|-------------------|
+|--bar-background|	Background of the range bar|
+|--bar-background-active|	Background of the active range bar|
+|--bar-border-radius|	Border radius of the range bar|
+|--bar-height|	Height of the range bar|
+|--height|	Height of the range|
+|--knob-background|	Background of the range knob|
+|--knob-border-radius|	Border radius of the range knob|
+|--knob-box-shadow|	Box shadow of the range knob|
+|--knob-size|	Size of the range knob|
+|--pin-background|	Background of the range pin|
+|--pin-color|	Color of the range pin|
+
+## Slots
+|Name|	Description|
+|------------------|-----------------------|
+|"end"|	Content is placed to the right of the range slider in LTR, and to the left in RTL.|
+|"start"|	Content is placed to the left of the range slider in LTR, and to the right in RTL.|
+
+

@@ -9,14 +9,36 @@ import { PopoverController } from '@ionic/angular';
 export class PopoverInfoComponent implements OnInit {
 
 
-  items = Array(6);
+  items = [
+
+    {
+      name: 'twitter',
+      icon: 'logo-twitter',
+      color: 'twitter'
+
+    },
+    {
+      name: 'facebook',
+      icon: 'logo-facebook',
+      color: 'facebook'
+
+    },
+    {
+      name: 'google',
+      icon: 'logo-google',
+      color: 'google'
+
+    }
+
+
+  ]
 
 
   constructor(private popoverCtrl: PopoverController) { }
 
   ngOnInit() {}
 
-  onClick(valor: number) {
+  onClick(valor: any) {
 
       this.popoverCtrl.dismiss({
         item: valor
