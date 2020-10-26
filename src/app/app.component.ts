@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Observable } from 'rxjs';
 import { DataService } from './services/data.service';
+import { Componente } from 'src/app/interafaces/interfaces';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,7 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar, 
+    private statusBar: StatusBar,
     private dataservices: DataService
   ) {
     this.initializeApp();

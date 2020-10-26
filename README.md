@@ -3336,8 +3336,106 @@ export class PopoverExample {
 |--min-width|	Minimum width of the popover|
 |--width|	Width of the popover|
 
+# 
+
+# We will add our example code in which we display popover in three different places on a screen.
 
 
 
 
+Popover code on ower first page.
 
+~~~htm
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+          <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title color="primary">popover</ion-title>
+
+
+  <ion-buttons slot="end" >
+      <ion-button (click)="presentPopover($event)">
+          <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+      </ion-button>
+  </ion-buttons>
+
+
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content>
+    <ion-button (click)="presentPopover($event)" expand="block">Popover</ion-button>
+</ion-content>
+
+
+<ion-footer>
+
+<ion-toolbar>
+
+  <ion-buttons slot="start" >
+      <ion-button (click)="presentPopover($event)">
+          <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+      </ion-button>
+  </ion-buttons>
+
+
+
+  <ion-tittle  >Footer</ion-tittle>
+</ion-toolbar>
+</ion-footer>
+
+~~~
+
+into de ts files we have to put the following code.abs
+~~~javascript
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: PopoverInfoComponent,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true,
+      backdropDismiss: false
+
+    });
+    await popover.present();
+    const { data } = await  popover.onWillDismiss();
+
+    console.log(data);
+  }
+~~~
+
+In order to create the popover page.  we most create a compoenent in witsh we are going to display the data.abs
+as fallow.abs
+
+~~~htm
+<ion-list>
+  <ion-item *ngFor="let item of items; let i = index"
+                (click)="onClick(i + 1)">
+      <ion-label>Item: {{ i +1 }}</ion-label>
+  </ion-item>
+</ion-list>
+~~~
+
+~~~javascript
+export class PopoverInfoComponent implements OnInit {
+
+
+  items = Array(6);
+
+
+  constructor(private popoverCtrl: PopoverController) { }
+
+  ngOnInit() {}
+
+  onClick(valor: number) {
+
+      this.popoverCtrl.dismiss({
+        item: valor
+      });
+  }
+}
+~~~
