@@ -3934,3 +3934,238 @@ document.documentElement.style.setProperty('--animate-duration', '.5s');
 
 [animate.style/#documentation]:https://animate.style/#documentation
 # 
+
+
+# ion-searchbar
+![](https://www.masterionic.com/wp-content/uploads/2019/09/ionic4-search.png)
+### Searchbars represent a text field that can be used to search through a collection. They can be displayed inside of a toolbar or the main content.
+
+### A Searchbar should be used instead of an input to search lists. A clear button is displayed upon entering input in the searchbar's text field. Clicking on the clear button will erase the text field and the input will remain focused. A cancel button can be enabled which will clear the input and lose the focus upon click.
+
+# Keyboard Display
+## Android
+![](https://s3.amazonaws.com/ionic-marketplace/ionic-filter-bar/screenshot_2.png)
+
+### By default, tapping the input will cause the keyboard to appear with a magnifying glass icon on the submit button. You can optionally set the inputmode property to "search", which will change the icon from a magnifying glass to a carriage return.
+
+# iOS
+|||
+|-------------|----------------|
+|![](https://florian.ec/blog/2015-07-25-ios-search-bar-ionic/ios-search-bar.gif)|![](https://florian.ec/blog/2015-07-25-ios-search-bar-ionic/ionic-search-bar.gif)|
+
+### By default, tapping the input will cause the keyboard to appear with the text "return" on a gray submit button. You can optionally set the inputmode property to "search", which will change the text from "return" to "go", and change the button color from gray to blue. Alternatively, you can wrap the ion-searchbar in a form element with an action property. This will cause the keyboard to appear with a blue submit button that says "search".
+
+# Usage
+~~~html
+<!-- Default Searchbar -->
+<ion-searchbar></ion-searchbar>
+
+<!-- Searchbar with cancel button always shown -->
+<ion-searchbar showCancelButton="always"></ion-searchbar>
+
+<!-- Searchbar with cancel button never shown -->
+<ion-searchbar showCancelButton="never"></ion-searchbar>
+
+<!-- Searchbar with cancel button shown on focus -->
+<ion-searchbar showCancelButton="focus"></ion-searchbar>
+
+<!-- Searchbar with danger color -->
+<ion-searchbar color="danger"></ion-searchbar>
+
+<!-- Searchbar with value -->
+<ion-searchbar value="Ionic"></ion-searchbar>
+
+<!-- Searchbar with telephone type -->
+<ion-searchbar type="tel"></ion-searchbar>
+
+<!-- Searchbar with numeric inputmode -->
+<ion-searchbar inputmode="numeric"></ion-searchbar>
+
+<!-- Searchbar disabled -->
+<ion-searchbar disabled="true"></ion-searchbar>
+
+<!-- Searchbar with a cancel button and custom cancel button text -->
+<ion-searchbar showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar>
+
+<!-- Searchbar with a custom debounce -->
+<ion-searchbar debounce="500"></ion-searchbar>
+
+<!-- Animated Searchbar -->
+<ion-searchbar animated></ion-searchbar>
+
+<!-- Searchbar with a placeholder -->
+<ion-searchbar placeholder="Filter Schedules"></ion-searchbar>
+
+<!-- Searchbar in a Toolbar -->
+<ion-toolbar>
+  <ion-searchbar></ion-searchbar>
+</ion-toolbar>
+~~~
+
+# Properties
+## animated
+|Description|If true, enable searchbar animation.|
+|---------------------|----------------------|
+|Attribute|	animated|
+|Type|	boolean|
+|Default|	false|
+# 
+## autocomplete
+|Description	|Set the input's autocomplete property.|
+|--------------|-----------------|
+|Attribute|	autocomplete|
+|Type|	"on" - "off" - "name" - "honorific-prefix" - "given-name" - "additional-name" - "family-name" - "honorific-suffix" - "nickname" - "email" - "username" - "new-password" - "current-password" - "one-time-code" - "organization-title" - "organization" - "street-address" - "address-line1" - "address-line2" - "address-line3" - "address-level4" - "address-level3" - "address-level2" - "address-level1" - "country" - "country-name" - "postal-code" - "cc-name" - "cc-given-name" - "cc-additional-name" - "cc-family-name" - "cc-number" - "cc-exp" - "cc-exp-month" - "cc-exp-year" - "cc-csc" - "cc-type" - "transaction-currency" - "transaction-amount" - "language" - "bday" - "bday-day" - "bday-month" - "bday-year" - "sex" - "tel" - "tel-country-code" - "tel-national" - "tel-area-code" - "tel-local" - "tel-extension" - "impp" - "url" - "photo"|
+|Default|	'off'|
+
+# 
+## autocorrect
+|Description	|Set the input's autocorrect property.|
+|----------------|---------------------|
+|Attribute|	autocorrect|
+|Type|	"off" - "on"|
+|Default|	'off'|
+# 
+# cancelButtonIcon
+|Description	|Set the cancel button icon. Only applies to md mode. Defaults to "arrow-back-sharp".|
+|--------------|------------------|
+|Attribute|	cancel-button-icon|
+|Type|	string|
+|Default|	config.get('backButtonIcon', 'arrow-back-sharp') as string|
+# 
+## cancelButtonText
+|Description	|Set the the cancel button text. Only applies to ios mode.|
+|----------------|-----------------|
+|Attribute|	cancel-button-text|
+|Type|	string|
+|Default|	'Cancel'|
+
+#
+## clearIcon
+|Description	|Set the clear icon. Defaults to "close-circle" for ios and "close-sharp" for md.|
+|--------------------|-----------------|
+|Attribute|	clear-icon|
+|Type|	string - undefined|
+# 
+## color
+|Description	|The color to use from your application's color palette. Default options are: "primary", "secondary", "tertiary", "success", "warning", "danger", "light", "medium", and "dark". For more information on colors, see theming.|
+|-------------|--------------------|
+|Attribute|	color|
+|Type|	string - undefined|
+# 
+## debounce
+|Description	|Set the amount of time, in milliseconds, to wait to trigger the ionChange event after each keystroke.|
+|-----------|--------------|
+|Attribute|	debounce|
+|Type|	number|
+|Default|	250|
+# 
+## disabled
+|Description|If true, the user cannot interact with the input.|
+|------------|-------------|
+|Attribute|	disabled|
+|Type|	boolean|
+|Default|	false|
+# 
+## enterkeyhint
+|Description	|A hint to the browser for which enter key to display. Possible values: "`enter`", "`done`", "`go`", "`next`", "`previous`", "`search`", and "`send`".|
+|---------------|-------------------|
+|Attribute|	enterkeyhint|
+|Type|	"`done`" - "`enter`" - "`go`" - "`next`" - "`previous`" - "`search`" - "`send`" - `undefined`|
+# 
+## inputmode
+|Description	|A hint to the browser for which keyboard to display. Possible values: "`none`", "`text`", "`tel`", "`url`", "`email`", "`numeric`", "`decimal`", and "`search`".|
+|---------------|-----------------|
+|Attribute|	inputmode|
+|Type|	"`decimal`" - "`email`" - "`none`" - "`numeric`" - "`search`" - "`tel`" - "`text`" - "`url`" - `undefined`|
+# 
+## mode
+|Description|The mode determines which platform styles to use.|
+|----------------|-----------------|
+|Attribute|	mode|
+|Type|	"ios"  "md"|
+
+# 
+[information: Security Documentation]:https://ionicframework.com/docs/techniques/security
+
+## placeholder
+|Description|Set the input's placeholder. placeholder can accept either plaintext or HTML as a string. To display characters normally reserved for HTML, they must be escaped. For example <Ionic> would become &lt;Ionic&gt; For more [information: Security Documentation][information: Security Documentation]|
+|-----------------|-------------------|
+|Attribute|	placeholder|
+|Type|	string|
+|Default|	'Search'|
+# 
+## searchIcon
+|Description|The icon to use as the search icon. Defaults to "search-outline" in ios mode and "search-sharp" in md mode.|
+|------------------|---------------------|
+|Attribute|	search-icon|
+|Type|	string - undefined|
+
+# 
+## showCancelButton
+|Description|Sets the behavior for the cancel button. Defaults to "`never`". Setting to "`focus`" shows the cancel button on focus. Setting to "`never`" hides the cancel button. Setting to "`always`" shows the cancel button regardless of focus state.|
+|----------------|------------------------|
+|Attribute|	show-cancel-button|
+|Type|	"always" - "focus" - "never"|
+|Default|	'never'|
+
+# 
+
+## spellcheck
+|Description|If true, enable spellcheck on the input.|
+|----------------|---------------|
+|Attribute|	spellcheck|
+|Type|	boolean|
+|Default|	false|
+#
+## type
+|Description|Set the type of the input.|
+|----------------------|-------------------|
+|Attribute|	type|
+|Type|	"email" - "number" - "password" - "search" - "tel" - "text" - "url"|
+|Default|	'search'|
+# 
+## value
+|Description	|the value of the searchbar.|
+|-------------------|--------------------|
+|Attribute|	value|
+|Type|	null - string - undefined|
+|Default|	''|
+# 
+## Events
+|Name|	Description|
+|-----------------|-----------------|
+|ionBlur|	Emitted when the input loses focus.|
+|ionCancel|	Emitted when the cancel button is clicked.|
+|ionChange|	Emitted when the value has changed.|
+|ionClear|	Emitted when the clear input button is clicked.
+|ionFocus|	Emitted when the input has focus.|
+|ionInput|	Emitted when a keyboard input occurred.|
+# 
+# Methods
+## getInputElement
+|Description|	Returns the native < input> element used under the hood.|
+|----------------------|------------------------|
+|Signature|	getInputElement() => Promise<HTMLInputElement>|
+# 
+## setFocus
+|Description	|Sets focus on the specified ion-searchbar. Use this method instead of the global input.focus().|
+|-----------------------|----------------------|
+|Signature|	setFocus() => Promise<void>|
+# 
+# CSS Custom Properties
+|Name|	Description|
+|-----------------------|----------------------|
+|--background	|Background of the searchbar input|
+|--border-radius	|Border radius of the searchbar input|
+|--box-shadow	|Box shadow of the searchbar input|
+|--cancel-button-color|	Color of the searchbar cancel button|
+|--clear-button-color	|Color of the searchbar clear button|
+|--color	|Color of the searchbar text|
+|--icon-color	|Color of the searchbar icon|
+|--placeholder-color	|Color of the searchbar placeholder|
+|--placeholder-font-style	|Font style of the searchbar placeholder|
+|--placeholder-font-weight|	Font weight of the searchbar placeholder|
+|--placeholder-opacity|	Opacity of the searchbar placeholder|
+#
+
+
