@@ -96,4 +96,10 @@
     "name": "ProgressBar",
     "redirectTo": "/progress"
   }
+  ,
+  {
+    "icon": "arrow-down-outline",
+    "name": "Refresher",
+    "redirectTo": "/refresher"
+  }
 ]
