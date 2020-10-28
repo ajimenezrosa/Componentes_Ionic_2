@@ -4248,7 +4248,7 @@ export class FiltroPipe implements PipeTransform {
 
 
 
-# This is the para code placed in the search.
+# This is the code placed in the search.
 ~~~javascript
   constructor(private servicesCtrl: DataService) { }
 
@@ -4287,3 +4287,314 @@ constructor (private servicesCtrl: DataService)
 ### then we consume our service and at the same time we apply the filter using our pipe
 
 
+# 
+
+# 
+
+# ion-segment
+| | | |
+|---------------|-------------------|----------------------|
+|![](https://i.stack.imgur.com/ysoAc.jpg)|![](https://lh3.googleusercontent.com/proxy/8AzK27jjYxED2vJLwAO--41EqB21zAJGOA4kQ8u_HP6rv6ils-VjHaBAqhKZoqhMvK28NKZqjiBjteCrUK0g8XHzpq70YATO2_MBcKMdHfZqImJBUqvUb58)|![](https://www.jqueryscript.net/images/jQuery-Plugin-To-Create-iOS-Style-Segmented-Controls-Segment-js.jpg)|
+
+#### Segments display a group of related buttons, sometimes known as segmented controls, in a horizontal row. They can be displayed inside of a toolbar or the main content.
+
+#### Their functionality is similar to tabs, where selecting one will deselect all others. Segments are useful for toggling between different views inside of the content. Tabs should be used instead of a segment when clicking on a control should navigate between pages.
+
+##  Scrollable Segments
+#### Segments are not scrollable by default. Each segment button has a fixed width, and the width is determined by dividing the number of segment buttons by the screen width. This ensures that each segment button can be displayed on the screen without having to scroll. As a result, some segment buttons with longer labels may get cut off. To avoid this we recommend either using a shorter label or switching to a scrollable segment by setting the scrollable property to true. This will cause the segment to scroll horizontally, but will allow each segment button to have a variable width.
+
+# Usage
+~~~html
+<!-- Default Segment -->
+<ion-segment (ionChange)="segmentChanged($event)">
+  <ion-segment-button value="friends">
+    <ion-label>Friends</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="enemies">
+    <ion-label>Enemies</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<!-- Disabled Segment -->
+<ion-segment (ionChange)="segmentChanged($event)" disabled value="sunny">
+  <ion-segment-button value="sunny">
+    <ion-label>Sunny</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="rainy">
+    <ion-label>Rainy</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<!-- Segment with anchors -->
+<ion-segment (ionChange)="segmentChanged($event)">
+  <ion-segment-button value="dogs">
+    <ion-label>Dogs</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="cats">
+    <ion-label>Cats</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<!-- Scrollable Segment -->
+<ion-segment scrollable value="heart">
+  <ion-segment-button value="home">
+    <ion-icon name="home"></ion-icon>
+  </ion-segment-button>
+  <ion-segment-button value="heart">
+    <ion-icon name="heart"></ion-icon>
+  </ion-segment-button>
+  <ion-segment-button value="pin">
+    <ion-icon name="pin"></ion-icon>
+  </ion-segment-button>
+  <ion-segment-button value="star">
+    <ion-icon name="star"></ion-icon>
+  </ion-segment-button>
+  <ion-segment-button value="call">
+    <ion-icon name="call"></ion-icon>
+  </ion-segment-button>
+  <ion-segment-button value="globe">
+    <ion-icon name="globe"></ion-icon>
+  </ion-segment-button>
+  <ion-segment-button value="basket">
+    <ion-icon name="basket"></ion-icon>
+  </ion-segment-button>
+</ion-segment>
+
+<!-- Segment with secondary color -->
+<ion-segment (ionChange)="segmentChanged($event)" color="secondary">
+  <ion-segment-button value="standard">
+    <ion-label>Standard</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="hybrid">
+    <ion-label>Hybrid</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="sat">
+    <ion-label>Satellite</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<!-- Segment in a toolbar -->
+<ion-toolbar>
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="camera">
+      <ion-icon name="camera"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="bookmark">
+      <ion-icon name="bookmark"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
+
+<!-- Segment with default selection -->
+<ion-segment (ionChange)="segmentChanged($event)" value="javascript">
+  <ion-segment-button value="python">
+    <ion-label>Python</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="javascript">
+    <ion-label>Javascript</ion-label>
+  </ion-segment-button>
+</ion-segment>
+~~~
+~~~javascript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'segment-example',
+  templateUrl: 'segment-example.html',
+  styleUrls: ['./segment-example.css'],
+})
+export class SegmentExample {
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+  }
+}
+~~~
+
+# Properties
+## color
+|Description	|The color to use from your application's color palette. Default options are: "`primary`", "`secondary`", "`tertiary`", "`success`", "`warning`", "`danger`", "`light`", "`medium`", and "`dark`". For more information on colors, see theming.|
+|------------------------|---------------------|
+|Attribute|	color|
+|Type|	string - undefined|
+# 
+## disabled
+|Description|	If true, the user cannot interact with the segment.|
+|------------------------|----------------------------|
+|Attribute|	disabled|
+|Type|	boolean|
+|Default|false|
+# 
+## mode
+|Description	|The mode determines which platform styles to use.|
+|--------------------------|---------------------|
+|Attribute|	mode|
+|Type|	"ios" - "md"|
+# 
+## scrollable
+|Description	|If true, the segment buttons will overflow and the user can swipe to see them. In addition, this will disable the gesture to drag the indicator between the buttons in order to swipe to see hidden buttons.|
+|-----------------------|--------------------------|
+|Attribute|	scrollable|
+|Type|	boolean|
+|Default|	false|
+# 
+## value
+|Description	|the value of the segment.|
+|-----------------|--------------------|
+|Attribute|	value|
+|Type|	null - string - undefined|
+#
+# Events
+|Name|	Description|
+|------------------|---------------------|
+|ionChange|	Emitted when the value property has changed and any dragging pointer has been released from `ion-segment`.|
+#
+# CSS Custom Properties
+|Name|	Description|
+|--background|	Background of the segment button|
+#
+
+### SperHeores Json file
+~~~json
+[
+    {
+        "superhero":"Batman", 
+        "publisher":"DC Comics", 
+        "alter_ego":"Bruce Wayne",
+        "first_appearance":"Detective Comics #27",
+        "characters":"Bruce Wayne"
+    },
+    {
+        "superhero":"Superman", 
+        "publisher":"DC Comics", 
+        "alter_ego":"Kal-El",
+        "first_appearance":"Action Comics #1",
+        "characters":"Kal-El"
+    },
+    {
+        "superhero":"Flash", 
+        "publisher":"DC Comics", 
+        "alter_ego":"Jay Garrick",
+        "first_appearance":"Flash Comics #1",
+        "characters":"Jay Garrick, Barry Allen, Wally West, Bart Allen"
+    },
+    {
+        "superhero":"Green Lantern", 
+        "publisher":"DC Comics", 
+        "alter_ego":"Alan Scott",
+        "first_appearance":"All-American Comics #16",
+        "characters":"Alan Scott, Hal Jordan, Guy Gardner, John Stewart, Kyle Raynor, Jade, Sinestro, Simon Baz"
+    },
+    {
+        "superhero":"Green Arrow", 
+        "publisher":"DC Comics", 
+        "alter_ego":"Oliver Queen",
+        "first_appearance":"More Fun Comics #73",
+        "characters":"Oliver Queen"
+    },
+    {
+        "superhero":"Wonder Woman", 
+        "publisher":"DC Comics", 
+        "alter_ego":"Princess Diana",
+        "first_appearance":"All Star Comics #8",
+        "characters":"Princess Diana"
+    },
+    {
+        "superhero":"Martian Manhunter", 
+        "publisher":"DC Comics", 
+        "alter_ego":"J'onn J'onzz",
+        "first_appearance":"Detective Comics #225",
+        "characters":"Martian Manhunter"
+    },
+    {
+        "superhero":"Robin/Nightwing", 
+        "publisher":"DC Comics", 
+        "alter_ego":"Dick Grayson",
+        "first_appearance":"Detective Comics #38",
+        "characters":"Dick Grayson"
+    },
+    {
+        "superhero":"Blue Beetle", 
+        "publisher":"DC Comics", 
+        "alter_ego":"Dan Garret",
+        "first_appearance":"Mystery Men Comics #1",
+        "characters":"Dan Garret, Ted Kord, Jaime Reyes"
+    },
+    {
+        "superhero":"Black Canary", 
+        "publisher":"DC Comics", 
+        "alter_ego":"Dinah Drake",
+        "first_appearance":"Flash Comics #86",
+        "characters":"Dinah Drake, Dinah Lance"
+    },
+    {
+        "superhero":"Spider Man", 
+        "publisher":"Marvel Comics", 
+        "alter_ego":"Peter Parker",
+        "first_appearance":"Amazing Fantasy #15",
+        "characters":"Peter Parker"
+    },
+    {
+        "superhero":"Captain America", 
+        "publisher":"Marvel Comics", 
+        "alter_ego":"Steve Rogers",
+        "first_appearance":"Captain America Comics #1",
+        "characters":"Steve Rogers"
+    },
+    {
+        "superhero":"Iron Man", 
+        "publisher":"Marvel Comics", 
+        "alter_ego":"Tony Stark",
+        "first_appearance":"Tales of Suspense #39",
+        "characters":"Tony Stark"
+    },
+    {
+        "superhero":"Thor", 
+        "publisher":"Marvel Comics", 
+        "alter_ego":"Thor Odinson",
+        "first_appearance":"Journey into Myster #83",
+        "characters":"Thor Odinson"
+    },
+    {
+        "superhero":"Hulk", 
+        "publisher":"Marvel Comics", 
+        "alter_ego":"Bruce Banner",
+        "first_appearance":"The Incredible Hulk #1",
+        "characters":"Bruce Banner"
+    },
+    {
+        "superhero":"Wolverine", 
+        "publisher":"Marvel Comics", 
+        "alter_ego":"James Howlett",
+        "first_appearance":"The Incredible Hulk #180",
+        "characters":"James Howlett"
+    },
+    {
+        "superhero":"Daredevil", 
+        "publisher":"Marvel Comics", 
+        "alter_ego":"Matthew Michael Murdock",
+        "first_appearance":"Daredevil #1",
+        "characters":"Matthew Michael Murdock"
+    },
+    {
+        "superhero":"Hawkeye", 
+        "publisher":"Marvel Comics", 
+        "alter_ego":"Clinton Francis Barton",
+        "first_appearance":"Tales of Suspense #57",
+        "characters":"Clinton Francis Barton"
+    },
+    {
+        "superhero":"Cyclops", 
+        "publisher":"Marvel Comics", 
+        "alter_ego":"Scott Summers",
+        "first_appearance":"X-Men #1",
+        "characters":"Scott Summers"
+    },
+    {
+        "superhero":"Silver Surfer", 
+        "publisher":"Marvel Comics", 
+        "alter_ego":"Norrin Radd",
+        "first_appearance":"The Fantastic Four #48",
+        "characters":"Norrin Radd"
+    }
+]
+~~~
