@@ -108,4 +108,10 @@
     "name": "Search",
     "redirectTo": "/searcher"
   }
+  ,
+  {
+    "icon": "copy-outline",
+    "name": "Segment",
+    "redirectTo": "/segment"
+  }
 ]

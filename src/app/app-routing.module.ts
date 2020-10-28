@@ -88,6 +88,10 @@ const routes: Routes = [
     path: 'searcher',
     loadChildren: () => import('./pages/searcher/searcher.module').then( m => m.SearcherPageModule)
   },
+  {
+    path: 'segment',
+    loadChildren: () => import('./pages/segment/segment.module').then( m => m.SegmentPageModule)
+  },
 
 ];
 
