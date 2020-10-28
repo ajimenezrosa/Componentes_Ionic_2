@@ -2901,22 +2901,28 @@ constructor(private menu: MenuController) { }
 
 # Usage
 ~~~javascript
-import React, { useState } from 'react';
-import { IonModal, IonButton, IonContent } from '@ionic/react';
+import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ModalPage } from '../modal/modal.page';
 
-export const ModalExample: React.FC = () => {
-  const [showModal, setShowModal] = useState(false);
+@Component({
+  selector: 'modal-example',
+  templateUrl: 'modal-example.html',
+  styleUrls: ['./modal-example.css']
+})
+export class ModalExample {
+  constructor(public modalController: ModalController) {
 
-  return (
-    <IonContent>
-      <IonModal isOpen={showModal} cssClass='my-custom-class'>
-        <p>This is modal content</p>
-        <IonButton onClick={() => setShowModal(false)}>Close Modal</IonButton>
-      </IonModal>
-      <IonButton onClick={() => setShowModal(true)}>Show Modal</IonButton>
-    </IonContent>
-  );
-};
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ModalPage,
+      cssClass: 'my-custom-class'
+    });
+    return await modal.present();
+  }
+}
 ~~~
 
 ## Swipeable Modals
@@ -2926,44 +2932,30 @@ export const ModalExample: React.FC = () => {
 Card style modals when running on iPhone-sized devices do not have backdrops. As a result, the --backdrop-opacity variable will not have any effect.
 ~~~
 ~~~javascript
-const App: React.FC = () => {
-  const routerRef = useRef<HTMLIonRouterOutletElement | null>(null);
+import { Component, Input } from '@angular/core';
 
-  return (
-    <IonApp>
-      <IonReactRouter>
-        <IonRouterOutlet ref={routerRef}>
-          <Route path="/home" render={() => <Home router={routerRef.current} />}  exact={true} />
-        </IonRouterOutlet>
-      </IonReactRouter>
-    </IonApp>
-  )
-};
+@Component({
+  selector: 'modal-page',
+})
+export class ModalPage {
 
-...
+  constructor() {}
 
-interface HomePageProps {
-  router: HTMLIonRouterOutletElement | null;
 }
 
-const Home: React.FC<HomePageProps> = ({ router }) => {
-  const [showModal, setShowModal] = useState(false);
-
-  return (
-    ...
-
-    <IonModal
-      isOpen={showModal}
-      cssClass='my-custom-class'
-      swipeToClose={true}
-      presentingElement={router || undefined}
-      onDidDismiss={() => setShowModal(false)}>
-      <p>This is modal content</p>
-    </IonModal>
-
-    ...
-  );
-};
+...
+async presentModal() {
+  const modal = await this.modalController.create({
+    component: ModalPage,
+    cssClass: 'my-custom-class',
+    componentProps: {
+      'firstName': 'Douglas',
+      'lastName': 'Adams',
+      'middleInitial': 'N'
+    }
+  });
+  return await modal.present();
+}
 ~~~
 
 #### In most scenarios, setting a ref on IonRouterOutlet and passing that ref's current value to presentingElement is fine. In cases where you are presenting a card-style modal from within another modal, you should pass in the top-most ion-modal ref as the presentingElement.
@@ -3095,6 +3087,7 @@ const Home: React.FC<HomePageProps> = ({ router }) => {
 
 # CSS Custom Properties
 |Name|	Description|
+|--------------|----------------------|
 |--backdrop-opacity|	Opacity of the backdrop|
 |--background|	Background of the modal content|
 |--border-color|	Border color of the modal content|
