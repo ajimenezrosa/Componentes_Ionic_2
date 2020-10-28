@@ -102,4 +102,10 @@
     "name": "Refresher",
     "redirectTo": "/refresher"
   }
+  ,
+  {
+    "icon": "search-outline",
+    "name": "Search",
+    "redirectTo": "/searcher"
+  }
 ]

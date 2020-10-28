@@ -84,6 +84,10 @@ const routes: Routes = [
     path: 'refresher',
     loadChildren: () => import('./pages/refresher/refresher.module').then( m => m.RefresherPageModule)
   },
+  {
+    path: 'searcher',
+    loadChildren: () => import('./pages/searcher/searcher.module').then( m => m.SearcherPageModule)
+  },
 
 ];
 
