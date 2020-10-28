@@ -11,18 +11,18 @@ export class SearcherPage implements OnInit {
   constructor(private servicesCtrl: DataService) { }
 
   albumes: any[] = [];
-
+  textoFiltrar: string = '';
   ngOnInit() {
   }
 
   onSearchChange(event) {
 
+      this.textoFiltrar = event.detail.value;
+
       this.servicesCtrl.getAlbumes().subscribe(data => {
               this.albumes = data;
-                // console.log(data);
       });
 
-      // console.log(event) ;
   }
 
 }

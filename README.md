@@ -4168,4 +4168,129 @@ document.documentElement.style.setProperty('--animate-duration', '.5s');
 |--placeholder-opacity|	Opacity of the searchbar placeholder|
 #
 
+## We will now show the creation of a pipe.
+
+## we will use it to filter an arrangement in our search screen
+
+~~~javascript
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'filtro'
+})
+export class FiltroPipe implements PipeTransform {
+
+  transform(value: any[], 
+            texto: string = '',
+            columna: string = 'title'
+            ): any[] {
+
+    if (texto === '') {
+      return value;
+    }
+
+    if ( !value ) {
+      return value;
+    }
+
+    texto = texto.toLowerCase();
+    return value.filter(
+      item => item[columna].toLowerCase().includes(texto)
+    );
+  }
+
+}
+~~~
+
+### In the Pipe the structure is as follows.
+  - (value) is the array we receive.
+  - text: is the text that we will use to filter the arrangement.
+  - column: it is the column of the Arrangement by which we will filter in this case by default it would be 'title'
+
+### The code used to filter the array will be done in javascript as you can see
+
+
+~~~html
+<ion-header>
+  <ion-toolbar>
+
+  <ion-buttons>
+    <ion-back-button defaultHref="/" 
+              text="Regresar" color="primary"
+              ></ion-back-button>
+  </ion-buttons>
+
+    <ion-title>searcher</ion-title>
+  </ion-toolbar>
+  <!-- Searchbar with a placeholder -->
+<ion-searchbar placeholder="Filter albums"
+                inputmode="text"
+                (ionChange)="onSearchChange($event)"
+                [debounce]="250"
+                animated
+              ></ion-searchbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+      <ion-item *ngFor="let album of albumes | filtro:textoFiltrar:'title'"> 
+            <ion-label>{{ album.title }}</ion-label>
+      </ion-item>
+  </ion-list>
+
+</ion-content>
+~~~
+#### In this code everything we show should not be new to us.
+#### what concerns us is concerning the pipe
+
+~~~javascript
+*ngFor = "let album of albums | filter: textFilter"
+~~~
+
+### In this case we pass parameters to our pipe.
+    - textFilter: which is a variable that stores the text value of the search to do the searches.
+    - 'title' ": which in this case is a text that tells me the name of the column to which I will apply the search.
+
+
+
+
+# This is the para code placed in the search.
+~~~javascript
+  constructor(private servicesCtrl: DataService) { }
+
+  albumes: any[] = [];
+  textoFiltrar: string = '';
+  ngOnInit() {
+  }
+
+  onSearchChange(event) {
+
+    this.servicesCtrl.getAlbumes().subscribe(data => {
+            this.albumes = data;
+    });
+
+   this.textoFiltrar = event.detail.value;
+
+
+  }
+~~~
+
+### We dealt with creating an empty array of any type called albums, we could well have assigned a type to this through an interface, but we decided to do it this way.
+
+### We also create a text variable called textFilter of type string
+
+~~~javascript
+   albums: any [] = [];
+   textFilter: string = '';
+~~~
+
+### we import the Service in which we are calling the data
+
+~~~javascript
+constructor (private servicesCtrl: DataService)
+~~~
+
+### then we consume our service and at the same time we apply the filter using our pipe
+
 
