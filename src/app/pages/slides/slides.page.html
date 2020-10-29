@@ -1,0 +1,44 @@
+<ion-content>
+
+<ion-slides pager="ios" class="slide-full">
+
+  <ion-slide *ngFor="let slide of slides">
+
+      <ion-card mode="ios">
+      <img [src]="slide.img" class="slide.image">
+      <ion-card-header>
+          <ion-card-subtitle>{{ slide.titulo }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+          {{slide.desc}}
+      </ion-card-content>
+
+      </ion-card>
+  </ion-slide>
+
+  <ion-slide>
+
+
+            <ion-card (click)="onClick()">
+                <img src="../../../assets/slides/retornar.jpg"  class="slide.image" >
+                <ion-card-header>
+                      <ion-card-subtitle color="primary">
+                          Retornar 
+                      </ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content>
+                      Retornar al menu principal.
+                </ion-card-content>
+            </ion-card>
+
+      <ion-button  expand="block" fill="clear" shape="round">
+
+      </ion-button>
+  </ion-slide>
+
+</ion-slides>
+
+
+
+
+</ion-content>

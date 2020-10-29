@@ -114,4 +114,10 @@
     "name": "Segment",
     "redirectTo": "/segment"
   }
+  ,
+  {
+    "icon": "albums-outline",
+    "name": "Slides",
+    "redirectTo": "/slides"
+  }
 ]
