@@ -5391,3 +5391,87 @@ ion-slides {
 
 ## 
 
+
+
+# ion-split-pane
+![](https://miro.medium.com/max/3374/1*bfo1s7pgJvfHJM4LLjL1jg.png)
+
+#### A split pane is useful when creating multi-view layouts. It allows UI elements, like menus, to be displayed as the viewport width increases.
+
+#### If the device's screen width is below a certain size, the split pane will collapse and the menu will be hidden. This is ideal for creating an app that will be served in a browser and deployed through the app store to phones and tablets.
+
+## Setting Breakpoints
+#### By default, the split pane will expand when the screen is larger than 992px. To customize this, pass a breakpoint in the when property. The when property can accept a boolean value, any valid media query, or one of Ionic's predefined sizes.
+
+~~~html
+<!-- can be "xs", "sm", "md", "lg", or "xl" -->
+<ion-split-pane when="md"></ion-split-pane>
+
+<!-- can be any valid media query https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries -->
+<ion-split-pane when="(min-width: 40px)"></ion-split-pane>
+~~~
+# 
+
+|Size	|Value|	Description|
+|-----------|-------------|---------------|
+|xs|	(min-width: 0px)|	Show the split-pane when the min-width is 0px (meaning, always)|
+|sm|	(min-width: 576px)|	Show the split-pane when the min-width is 576px|
+|md|	(min-width: 768px)|	Show the split-pane when the min-width is 768px|
+|lg|	(min-width: 992px)|	Show the split-pane when the min-width is 992px (default break point)|
+|xl|	(min-width: 1200px)|	Show the split-pane when the min-width is 1200px|
+# 
+# Usage
+~~~html
+<ion-split-pane contentId="main">
+  <!--  the side menu  -->
+  <ion-menu contentId="main">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  </ion-menu>
+
+  <!-- the main content -->
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-split-pane>
+~~~
+#
+# Properties
+## contentId
+|Description	|The content id of the split-pane's main content.|
+|---------------------|------------------------|
+|Attribute|	content-id|
+|Type|	string - undefined|
+
+## disabled
+|Description|If true, the split pane will be hidden.|
+|-------------|---------------|
+|Attribute|	disabled|
+|Type|	boolean|
+|Default|	false|
+# 
+## when
+|Description	|When the split-pane should be shown. Can be a CSS media query expression, or a shortcut expression. Can also be a boolean expression.|
+|------------------|-----------------|
+|Attribute|	when|
+|Type|	boolean - string|
+|Default|	QUERY['lg']|
+#
+# Events
+|Name|	Description|
+|-------------|--------------|
+|ionSplitPaneVisible|	Expression to be called when the split-pane visibility has changed|
+
+# CSS Custom Properties
+|Name|	Description|
+|------------|--------------------|
+|--border|	Border between panes|
+|--side-max-width|	Maximum width of the side pane. Does not apply when split pane is collapsed.|
+|--side-min-width|	Minimum width of the side pane. Does not apply when split pane is collapsed.|
+|--side-width|	Width of the side pane. Does not apply when split pane is collapsed.|
+
+#
+
+
+##
