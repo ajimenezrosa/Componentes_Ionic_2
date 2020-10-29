@@ -2385,8 +2385,8 @@ file .ts
 |---------------|----------------|
 |icon|	The icon of the reorder handle (uses ion-icon).|
 
-
-Practice:
+#
+## Practice:
 Html file.
 ~~~html
 <ion-header>
@@ -5639,6 +5639,213 @@ const routes: Routes = [
 |"top"|	Content is placed at the top of the screen.|
 #
 ##
+
+
+# ion-toast
+![](https://www.hkinfosoft.com/wp-content/uploads/2019/05/toast.gif)
+
+#### A Toast is a subtle notification commonly used in modern applications. It can be used to provide feedback about an operation or to display a system message. The toast appears on top of the app's content, and can be dismissed by the app to resume user interaction with the app.
+
+## Positioning
+#### Toasts can be positioned at the top, bottom or middle of the viewport. The position can be passed upon creation. The possible values are top, bottom and middle. If the position is not specified, the toast will be displayed at the bottom of the viewport.
+
+## Dismissing
+#### The toast can be dismissed automatically after a specific amount of time by passing the number of milliseconds to display it in the duration of the toast options. If a button with a role of "cancel" is added, then that button will dismiss the toast. To dismiss the toast after creation, call the dismiss() method on the instance.
+
+# Usage
+~~~javascript
+import { Component } from '@angular/core';
+import { ToastController } from '@ionic/angular';
+
+@Component({
+  selector: 'toast-example',
+  templateUrl: 'toast-example.html',
+  styleUrls: ['./toast-example.css'],
+})
+export class ToastExample {
+
+  constructor(public toastController: ToastController) {}
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Your settings have been saved.',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  async presentToastWithOptions() {
+    const toast = await this.toastController.create({
+      header: 'Toast header',
+      message: 'Click to Close',
+      position: 'top',
+      buttons: [
+        {
+          side: 'start',
+          icon: 'star',
+          text: 'Favorite',
+          handler: () => {
+            console.log('Favorite clicked');
+          }
+        }, {
+          text: 'Done',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    toast.present();
+  }
+
+}
+~~~
+# Properties
+## animated
+|Description	|If true, the toast will animate.|
+|-------------------|-----------------|
+|Attribute|	animated|
+|Type|	boolean|
+|Default|	true|
+# 
+## buttons
+|Description|An array of buttons for the toast.|
+|-------------------|---------------------|
+|Type|	(string - ToastButton)[] - undefined|
+# 
+## color
+|Description|The color to use from your application's color palette. Default options are: "`primary`", "`secondary`", "`tertiary`", "`success`", "`warning`", "`danger`", "`light`", "`medium`", and "`dark`". For more information on colors, see [theming][theming].|
+|------------------|-----------------------------|
+|Attribute|	color|
+|Type|	string - undefined|
+# 
+## cssClass
+|Description|Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.|
+|--------------------|------------------|
+|Attribute|	css-class|
+|Type|	string - string[] - undefined|
+# 
+## duration
+|Description	|How many milliseconds to wait before hiding the toast. By default, it will show until dismiss() is called.|
+|-------------------|-----------------|
+|Attribute|	duration|
+|Type|	number|
+|Default|	0|
+# 
+## enterAnimation
+|Description	|Animation to use when the toast is presented.|
+|------------------------|-------------------|
+|Type|	((baseEl: any, opts?: any) => Animation) - undefined|
+#
+## header
+|Description	|Header to be shown in the toast.|
+|----------------|-----------------|
+|Attribute|	header|
+|Type|	string - undefined|
+# 
+
+## keyboardClose
+|Description	|If true, the keyboard will be automatically dismissed when the overlay is presented.|
+|-----------------|----------------|
+|Attribute|	keyboard-close|
+|Type|	boolean|
+|Default|	false|
+# 
+## leaveAnimation
+|Description	|Animation to use when the toast is dismissed.|
+|----------------------|---------------|
+|Type|	((baseEl: any, opts?: any) => Animation) - undefined|
+# 
+## message
+|Description	|Message to be shown in the toast.|
+|-----------------|------------------|
+|Attribute|	message|
+|Type|	IonicSafeString - string - undefined|
+# 
+## mode
+|Description	|The mode determines which platform styles to use.|
+|--------------------|---------------------|
+|Attribute|	mode|
+|Type|	"ios" - "md"|
+# 
+## position
+|Description|The position of the toast on the screen.|
+|----------------------|----------------|
+|Attribute|	position|
+|Type|	"bottom" - "middle" - "top"|
+|Default|	'bottom'|
+# 
+## translucent
+|Description	|If true, the toast will be translucent. Only applies when the mode is "ios" and the device supports backdrop-filter.|
+|--------------------------|--------------------------|
+|Attribute|	translucent|
+|Type|	boolean|
+|Default|	false|
+# 
+# Events
+|Name|	Description|
+|------------|----------------|
+|ionToastDidDismiss|	Emitted after the toast has dismissed.|
+|ionToastDidPresent|	Emitted after the toast has presented.|
+|ionToastWillDismiss|	Emitted before the toast has dismissed.|
+|ionToastWillPresent|	Emitted before the toast has presented.|
+#
+# Methods
+## dismiss
+|Description	|Dismiss the toast overlay after it has been presented.|
+|----------------|---------------|
+|Signature|	dismiss(data?: any, role?: string - undefined) => Promise<boolean>|
+# 
+## onDidDismiss
+|Description	|Returns a promise that resolves when the toast did dismiss.|
+|-------------------|------------------------|
+|Signature|	onDidDismiss<T = any>() => Promise<OverlayEventDetail<T>>|
+# 
+## onWillDismiss
+|Description	|Returns a promise that resolves when the toast will dismiss.|
+|-----------------------|--------------------|
+|Signature|	onWillDismiss<T = any>() => Promise<OverlayEventDetail<T>>|
+# 
+## present
+|Description	|Present the toast overlay after it has been created.|
+|----------------------|----------------------|
+|Signature|	present() => Promise<void>|
+#
+# CSS Shadow Parts
+|Name|	Description|
+|-------------|--------------|
+|button|	Any button element that is displayed inside of the toast.|
+|container|	The element that wraps all child elements.|
+|header|	The header text of the toast.|
+|message|	The body text of the toast.|
+#
+## CSS Custom Properties
+|Name|	Description|
+|-----------|------------|
+|--background|	Background of the toast|
+|--border-color|	Border color of the toast|
+|--border-radius|	Border radius of the toast|
+|--border-style|	Border style of the toast|
+|--border-width|	Border width of the toast|
+|--box-shadow|	Box shadow of the toast|
+|--button-color|	Color of the button text|
+|--color|	Color of the toast text|
+|--end|	Position from the right if direction is left-to-right, and from the left if direction is right-to-left|
+|--height|	Height of the toast|
+|--max-height|	Maximum height of the toast|
+|--max-width|	Maximum width of the toast|
+|--min-height|	Minimum height of the toast|
+|--min-width|	Minimum width of the toast|
+|--start|	Position from the left if direction is left-to-right, and from the right if direction is right-to-left|
+|--white-space|	White space of the toast message|
+|--width|	Width of the toast|
+
+# 
+
+## 
+
+
 
 
 
