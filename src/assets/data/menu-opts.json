@@ -126,4 +126,12 @@
     "name": "Tabs",
     "redirectTo": "/tabs"
   }
+  ,
+  {
+    "icon": "pricetag-outline",
+    "name": "Toasts",
+    "redirectTo": "/toasts"
+  }
+
+
 ]
