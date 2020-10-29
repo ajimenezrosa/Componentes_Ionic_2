@@ -5474,4 +5474,171 @@ ion-slides {
 #
 
 
+## Realy, I don't know why this part is not included in the IONIC documentation. If you place this code, you may notice that it does not work.
+# `mmmmmmm,`  why, we have done everything that the documentation says.
+
+## Well here you have the answer.
+#### Possibly when placing the device in table mode you will notice that the menu options do not appear. Calm everything is fine. You just have to place the following instruction.
+~~~html
+<ion-split-pane when = "md" contentId = "main">
+~~~
+#### where main is the name of your menu.
+
+#### also for you may have a kind of mishap on the tablet-type screen. to solve this you must place in the ion-menu-toggle.
+~~~json
+[autoHide] = "false"
+~~~
+
+# below I leave the code with the modifications.
+~~~html
+<ion-app>
+
+<!-- can be "xs", "sm", "md", "lg", or "xl" -->
+<ion-split-pane when="md" contentId="main">
+
+  <ion-menu side="start" menuId="first" contentId="main">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Componentes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle *ngFor="let c of componentes | async" 
+                  [autoHide]="false">
+
+        <ion-item 
+            [routerLink]="c.redirectTo"
+            detail=true>
+        <ion-icon name="{{c.icon}}" slot="start" color="primary" ></ion-icon>
+           {{ c.name }}
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-split-pane>
+</ion-app>
+~~~
+#
+## 
+
+# ion-tabs
+||||
+|---------|------------|---------|
+|![](https://i1.wp.com/ionicacademy.com/wp-content/uploads/2018/09/ionic-4-tabs.gif)|![](https://s3.amazonaws.com/ionic-marketplace/ionic-2-scrollable-tabs/screenshot_1.gif)|![](https://i.stack.imgur.com/FWYWC.gif)
+
+####  Tabs are a top level navigation component to implement a tab-based navigation. The component is a container of individual Tab components.
+
+#### The ion-tabs component does not have any styling and works as a router outlet in order to handle navigation. It does not provide any UI feedback or mechanism to switch between tabs. In order to do so, an ion-tab-bar should be provided as a direct child of ion-tabs.
+
+#### Both `ion-tabs` and ion-tab-bar can be used as standalone elements. They don’t depend on each other to work, but they are usually used together in order to implement a tab-based navigation that behaves like a native app.
+
+#### The `ion-tab-bar` needs a slot defined in order to be projected to the right place in an `ion-tabs` component.
+
+# Usage
+~~~html
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="schedule">
+      <ion-icon name="calendar"></ion-icon>
+      <ion-label>Schedule</ion-label>
+      <ion-badge>6</ion-badge>
+    </ion-tab-button>
+
+    <ion-tab-button tab="speakers">
+      <ion-icon name="person-circle"></ion-icon>
+      <ion-label>Speakers</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="map">
+      <ion-icon name="map"></ion-icon>
+      <ion-label>Map</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="about">
+      <ion-icon name="information-circle"></ion-icon>
+      <ion-label>About</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+~~~
+# 
+## Router integration
+#### When used with Angular's router the tab property of the ion-tab-button should be a reference to the route path.
+#
+~~~html
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="schedule">
+      <ion-icon name="calendar"></ion-icon>
+      <ion-label>Schedule</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+~~~
+# 
+~~~javascript
+import { Routes } from '@angular/router';
+import { TabsPage } from './tabs-page';
+
+const routes: Routes = [
+  {
+    path: 'tabs',
+    component: TabsPage,
+    children: [
+      {
+        path: 'schedule',
+        children: [
+          {
+            path: '',
+            loadChildren: '../schedule/schedule.module#ScheduleModule'
+          }
+        ]
+      },
+      {
+        path: '',
+        redirectTo: '/app/tabs/schedule',
+        pathMatch: 'full'
+      }
+    ]
+  }
+];
+~~~
+# 
+
+# Events
+|Name|	Description|
+|------------|---------|
+|ionTabsDidChange|	Emitted when the navigation has finished transitioning to a new component.|
+|ionTabsWillChange|	Emitted when the navigation is about to transition to a new component.|
+# 
+
+# Methods
+## getSelected
+|Description	|Get the currently selected tab.|
+|-----------------|-----------------|
+|Signature|	getSelected() => Promise<`string` - `undefined`>|
+### getTab
+|Description|Get a specific tab by the value of its tab property or an element reference.|
+|-------------|---------------|
+|Signature|	getTab(tab: string | HTMLIonTabElement) => Promise<HTMLIonTabElement | undefined>|
+## select
+#
+|Description	|Select a tab by the value of its tab property or an element reference.|
+|-------------|--------------|
+|Signature|	select(tab: string | HTMLIonTabElement) => Promise<boolean>|
+# 
+## Slots
+|Name|	Description|
+|-------------|---------------|
+||Content is placed between the named slots if provided without a slot.|
+|"bottom"|	Content is placed at the bottom of the screen.|
+|"top"|	Content is placed at the top of the screen.|
+#
 ##
+
+
+
